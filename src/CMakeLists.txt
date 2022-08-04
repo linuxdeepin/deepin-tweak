@@ -1,24 +1,9 @@
-set(SRCS
-  ./main.cpp
-)
+# Application
+if (NOT CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(LIBRARY_OUTPUT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib")
+    add_definitions(-DPLUGINPATH="${LIBRARY_OUTPUT_PATH}")
+endif()
 
-add_executable(deepin-tweak
-  ${src_prop}
-)
-
-set_target_properties(deepin-tweak PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER tweak.deepin.org
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE
-)
-
-target_compile_definitions(deepin-tweak
-    PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>
-)
-
-target_link_libraries(deepin-tweak
-    PRIVATE
-    Qt::Quick
-)
+add_subdirectory(main)
+add_subdirectory(preloadplugin)
+add_subdirectory(maincomponentplugin)
