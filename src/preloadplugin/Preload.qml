@@ -42,8 +42,7 @@ ApplicationWindow {
     width: 500
     height: 700
     title: qsTr("deepin-tweak")
-    flags: Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint
-    header: TitleBar {}
+    flags: Qt.WindowMinButtonsHint | Qt.WindowCloseButtonHint
 
     DWindow.enabled: true
     DWindow.loadingOverlay: Rectangle {
