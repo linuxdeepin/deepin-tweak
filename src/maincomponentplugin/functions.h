@@ -14,3 +14,13 @@ public:
         return "pong";
     }
 };
+
+class Launcher : public QObject {
+    Q_OBJECT
+public:
+    explicit Launcher(QObject* parent = nullptr);
+    ~Launcher() override;
+
+    Q_INVOKABLE QString launch(const QString&     program,
+                               const QStringList& args = {});
+};

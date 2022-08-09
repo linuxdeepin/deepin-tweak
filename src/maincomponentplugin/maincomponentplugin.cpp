@@ -45,5 +45,7 @@ void MainComponentPlugin::initialize(QQmlApplicationEngine *engine)
 {
     engine->rootContext()->setContextProperty("pluginListModel",
                                               pluginListModel);
-    engine->rootContext()->setContextProperty("testFunction", new TestFunctions);
+    engine->rootContext()->setContextProperty("testFunction",
+                                              new TestFunctions);
+    engine->rootContext()->setContextProperty("launcher", new Launcher);
 }
