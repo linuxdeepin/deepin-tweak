@@ -22,11 +22,11 @@ deepin-tweak 会加载插件的主界面到窗口中，主界面的 qml 不能�
 
 在 `main.qml` 中需要提供以下属性作为插件的元信息:
 
-- Name
-- Description
-- Version
-- Author
-- Icon
+- name
+- description
+- version
+- author
+- icon
 
 ## 调用接口
 
@@ -36,7 +36,9 @@ deepin-tweak 内置了执行命令、读写文件及 DBus 调用的接口。
 
 tweak 提供了 launcher 对象，可以调用 launcher.launch(<program>, [args]) 方法执行一个命令，并获取输出。
 
-launcher.asyncLaunch(<program>, [args]) 方法可以异步执行一个命令，并通过回调函数获取命令输出.
+launcher.asyncLaunch(<program>, callback) 方法可以异步执行一个命令，并通过回调函数获取命令输出.
+
+launcher.asyncLaunchWithArgs(<program>, <[args]>, callback) 方法可以异步执行一个命令，并通过回调函数获取命令输出.
 
 ### 读写文件
 
@@ -64,4 +66,24 @@ DBusInterface {
 
 ```
 profiled.call('loadEffect', ['blur']);
+```
+
+### 插件示例
+
+```qml
+import QtQuick.Layouts 1.7
+import QtQuick 2.4
+import org.deepin.dtk 1.0
+
+RowLayout {
+  property var name: "Test Name"
+  property var description: "Test description"
+  property var version: "1.0.0"
+  property var author: "justforlxz"
+  property var icon: "icon.png"
+  Text {
+      text: "input"
+  }
+  LineEdit {}
+}
 ```
