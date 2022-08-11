@@ -11,16 +11,10 @@
 
 PluginListModel::PluginListModel(QObject *parent) : QAbstractListModel(parent)
 {
-    qRegisterMetaType<PluginItem>("PluginItem");
-
 #ifdef QT_DEBUG
     QDir dir("/home/lxz/plugins/");
     for (auto d : dir.entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-        items << PluginItem{
-            .name   = d,
-            .qml    = QString("file://%1/%2/main.qml").arg(dir.path()).arg(d),
-            .author = "I'm author.",
-        };
+        items << QString("file://%1/%2/main.qml").arg(dir.path()).arg(d);
     }
 #endif
 }
@@ -34,25 +28,19 @@ int PluginListModel::rowCount(const QModelIndex &parent) const
 QVariant PluginListModel::data(const QModelIndex &index, int role) const
 {
     switch (role) {
-        case NameRole: {
-            return items[index.row()].name;
-        }
         case PathRole: {
-            return items[index.row()].qml;
-        }
-        case AuthorRole: {
-            return items[index.row()].author;
+            return items[index.row()];
         }
     }
 
     Q_UNIMPLEMENTED();
+
+    return {};
 }
 
 QHash<int, QByteArray> PluginListModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
-    roles[NameRole]   = "name";
-    roles[AuthorRole] = "author";
-    roles[PathRole]   = "qml";
+    roles[PathRole] = "qml";
     return roles;
 }

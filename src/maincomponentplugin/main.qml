@@ -27,26 +27,25 @@ AppLoader {
             id: listView
             model: pluginListModel
             delegate: ColumnLayout {
-                required property string name
                 required property string qml
-                required property string author
                 width: listView.width
                 Label {
+                    id: label
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     Layout.leftMargin: 10
                     Layout.rightMargin: 10
-                    text: name + " - " + author
                     font.pixelSize: 22
                 }
                 Loader {
+                    id: loader
                     Layout.leftMargin: 10
                     Layout.rightMargin: 10
                     source: qml
-                    Rectangle {
-                        anchors.fill: parent
-                        color: "#66ccff"
-                        opacity: 0.05
+                    asynchronous: true
+                    visible: status == Loader.Ready
+                    onLoaded: {
+                      label.text = loader.item.name
                     }
                 }
             }
