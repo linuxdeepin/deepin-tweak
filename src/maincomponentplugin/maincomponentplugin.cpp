@@ -28,7 +28,8 @@
 
 DQUICK_USE_NAMESPACE
 
-MainComponentPlugin::MainComponentPlugin(QObject *parent) : QObject(parent)
+MainComponentPlugin::MainComponentPlugin(QObject *parent)
+    : QObject(parent)
 {
     pluginListModel = new PluginListModel(this);
 }
@@ -43,9 +44,7 @@ QUrl MainComponentPlugin::mainComponentPath() const
 
 void MainComponentPlugin::initialize(QQmlApplicationEngine *engine)
 {
-    engine->rootContext()->setContextProperty("pluginListModel",
-                                              pluginListModel);
-    engine->rootContext()->setContextProperty("testFunction",
-                                              new TestFunctions);
+    engine->rootContext()->setContextProperty("pluginListModel", pluginListModel);
+    engine->rootContext()->setContextProperty("testFunction", new TestFunctions);
     engine->rootContext()->setContextProperty("launcher", new Launcher(engine));
 }

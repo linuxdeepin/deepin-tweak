@@ -41,7 +41,7 @@ ApplicationWindow {
     visible: true
     width: 500
     height: 700
-    title: qsTr("deepin-tweak")
+    title: qsTr("Deepin Tweak")
     flags: Qt.WindowMinButtonsHint | Qt.WindowCloseButtonHint
 
     DWindow.enabled: true

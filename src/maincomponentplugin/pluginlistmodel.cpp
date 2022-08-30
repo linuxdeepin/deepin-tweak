@@ -1,23 +1,25 @@
 #include "pluginlistmodel.h"
 
-#include <qabstractitemmodel.h>
-#include <qglobal.h>
-#include <qnamespace.h>
-
 #include <QDebug>
 #include <QDir>
 #include <QMetaType>
+#include <QStandardPaths>
 #include <QVariant>
+#include <QtGlobal>
 
-PluginListModel::PluginListModel(QObject *parent) : QAbstractListModel(parent)
+PluginListModel::PluginListModel(QObject *parent)
+    : QAbstractListModel(parent)
 {
-#ifdef QT_DEBUG
-    QDir dir("/home/lxz/plugins/");
-    for (auto d : dir.entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-        items << QString("file://%1/%2/main.qml").arg(dir.path()).arg(d);
+    const QStringList &locations = QStandardPaths::standardLocations(
+        QStandardPaths::AppDataLocation);
+    for (const auto &location : locations) {
+        QDir dir(QString("%1/plugins"));
+        for (auto d : dir.entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+            items << QString("file://%1/%2/main.qml").arg(dir.path()).arg(d);
+        }
     }
-#endif
 }
+
 PluginListModel::~PluginListModel() {}
 
 int PluginListModel::rowCount(const QModelIndex &parent) const
@@ -27,15 +29,7 @@ int PluginListModel::rowCount(const QModelIndex &parent) const
 
 QVariant PluginListModel::data(const QModelIndex &index, int role) const
 {
-    switch (role) {
-        case PathRole: {
-            return items[index.row()];
-        }
-    }
-
-    Q_UNIMPLEMENTED();
-
-    return {};
+    return role == PathRole ? items[index.row()] : QAbstractItemModel::data(index, role);
 }
 
 QHash<int, QByteArray> PluginListModel::roleNames() const

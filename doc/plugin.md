@@ -8,7 +8,7 @@ deepin-tweak 接受的插件目录必须具备以下结构:
 
 - translations 目录
 
-  存放 qt 的翻译文件
+  存放 Qt 的翻译文件
 
 - main.qml
 
@@ -16,17 +16,25 @@ deepin-tweak 接受的插件目录必须具备以下结构:
 
 ## 主界面
 
-deepin-tweak 会加载插件的主界面到窗口中，主界面的 qml 不能设置 Window 元素。
+deepin-tweak 会加载插件的主界面到窗口中，主界面的 QML 不能是 Window 元素。
 
 ### 插件元信息
 
 在 `main.qml` 中需要提供以下属性作为插件的元信息:
 
-- name
+- display_name
 - description
 - version
 - author
 - icon
+
+```qml
+property string  name: "Test Name"
+property string  description: "Test description"
+property string  version: "1.0.0"
+property string  author: "justforlxz"
+property string  icon: "icon.png"
+```
 
 ## 调用接口
 
@@ -76,11 +84,11 @@ import QtQuick 2.4
 import org.deepin.dtk 1.0
 
 RowLayout {
-  property var name: "Test Name"
-  property var description: "Test description"
-  property var version: "1.0.0"
-  property var author: "justforlxz"
-  property var icon: "icon.png"
+  property string  name: "Test Name"
+  property string  description: "Test description"
+  property string  version: "1.0.0"
+  property string  author: "justforlxz"
+  property string  icon: "icon.png"
   Text {
       text: "input"
   }
