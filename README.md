@@ -2,4 +2,4 @@
 
 ## Documents
 
-[plugin](doc/plugin.md)
+[plugin](doc/README.zh_CN.md)
