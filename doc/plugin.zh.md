@@ -22,18 +22,18 @@ deepin-tweak 会加载插件的主界面到窗口中，主界面的 QML 不能�
 
 在 `main.qml` 中需要提供以下属性作为插件的元信息:
 
-- display_name
+- displayName
 - description
 - version
 - author
 - icon
 
 ```qml
-property string  name: "Test Name"
-property string  description: "Test description"
-property string  version: "1.0.0"
-property string  author: "justforlxz"
-property string  icon: "icon.png"
+property string displayName: "Test Name"
+property string description: "Test description"
+property string version: "1.0.0"
+property string author: "justforlxz"
+property string icon: "icon.png"
 ```
 
 ## 调用接口
@@ -84,14 +84,16 @@ import QtQuick 2.4
 import org.deepin.dtk 1.0
 
 RowLayout {
-  property string  name: "Test Name"
-  property string  description: "Test description"
-  property string  version: "1.0.0"
-  property string  author: "justforlxz"
-  property string  icon: "icon.png"
+  property string displayName: "Test Name"
+  property string description: "Test description"
+  property string version: "1.0.0"
+  property string author: "justforlxz"
+  property string icon: "icon.png"
   Text {
       text: "input"
   }
   LineEdit {}
 }
 ```
+
+更多插件示例在 [demos](demos) 目录查看。
