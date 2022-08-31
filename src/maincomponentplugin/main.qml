@@ -27,7 +27,7 @@ AppLoader {
             id: listView
             model: pluginListModel
             delegate: ColumnLayout {
-                required property string qml
+                required property string path
                 width: listView.width
                 Label {
                     id: label
@@ -41,11 +41,11 @@ AppLoader {
                     id: loader
                     Layout.leftMargin: 10
                     Layout.rightMargin: 10
-                    source: qml
+                    source: path + "/main.qml"
                     asynchronous: true
                     visible: status == Loader.Ready
                     onLoaded: {
-                      label.text = loader.item.name
+                      label.text = loader.item.displayName
                     }
                 }
             }

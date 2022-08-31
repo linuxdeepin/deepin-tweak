@@ -1,6 +1,8 @@
 #pragma once
+#include <optional>
 #include <QDebug>
 #include <QObject>
+#include <QStringList>
 #include <QtQml>
 
 class TestFunctions : public QObject
@@ -13,19 +15,35 @@ public:
     Q_INVOKABLE QString ping() { return "pong"; }
 };
 
-class Launcher : public QObject
+class LauncherCall : public QObject
 {
     Q_OBJECT
 public:
-    explicit Launcher(QObject *parent);
-    ~Launcher() override;
+    explicit LauncherCall();
+    ~LauncherCall() override;
 
-    Q_INVOKABLE QString launch(const QString &program, const QStringList &args = {});
-    Q_INVOKABLE void asyncLaunch(const QString &program, const QJSValue &jsCallback);
-    Q_INVOKABLE void asyncLaunchWithArgs(const QString &program,
-                                         const QStringList &args,
-                                         const QJSValue &jsCallback);
+    Q_INVOKABLE inline LauncherCall *program(const QString &program)
+    {
+        m_program = program;
+        return this;
+    }
+    Q_INVOKABLE inline LauncherCall *arguments(const QStringList &arguments)
+    {
+        m_arguments = arguments;
+        return this;
+    }
+    Q_INVOKABLE inline LauncherCall *timeout(const int timeout)
+    {
+        m_timeout = timeout;
+        return this;
+    }
+    Q_INVOKABLE QVariantMap call();
+    Q_INVOKABLE void asyncCall(const QJSValue &jsCallback);
 
-protected:
-    void onLaunchFinished(const QString &result, const QJSValue &callback);
+private:
+    QString m_program;
+    QStringList m_arguments;
+    std::optional<int> m_timeout;
 };
+
+// Q_DECLARE_METATYPE(LauncherCall *);

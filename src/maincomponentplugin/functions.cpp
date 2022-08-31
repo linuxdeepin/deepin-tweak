@@ -1,8 +1,12 @@
 #include "functions.h"
 
 #include <QJSValue>
+#include <QMetaType>
 #include <QProcess>
+#include <QQmlContext>
+#include <QQmlEngine>
 #include <QScopedPointer>
+#include <QTimer>
 
 TestFunctions::TestFunctions(QObject *parent)
     : QObject(parent)
@@ -10,47 +14,54 @@ TestFunctions::TestFunctions(QObject *parent)
 
 TestFunctions::~TestFunctions() {}
 
-Launcher::Launcher(QObject *parent)
-    : QObject(parent)
-{}
+LauncherCall::LauncherCall() {}
 
-Launcher::~Launcher() {}
+LauncherCall::~LauncherCall() {}
 
-QString Launcher::launch(const QString &program, const QStringList &args)
+QVariantMap LauncherCall::call()
 {
-    QScopedPointer<QProcess> process(new QProcess(this));
-    process->setProgram(program);
-    process->setArguments(args);
+    QScopedPointer<QProcess> process(new QProcess);
+    process->setProgram(m_program);
+    process->setArguments(m_arguments);
     process->start();
-    process->waitForFinished(-1);
-    QByteArray bytes = process->readAllStandardOutput();
-    return QString::fromLocal8Bit(bytes);
+    process->waitForFinished(m_timeout.value_or(-1));
+
+    QVariantMap map;
+    map["allStandardOutput"] = process->readAllStandardOutput();
+    map["allStandardError"] = process->readAllStandardError();
+
+    return map;
 }
 
-void Launcher::asyncLaunch(const QString &program, const QJSValue &jsCallback)
+void LauncherCall::asyncCall(const QJSValue &jsCallback)
 {
-    return asyncLaunchWithArgs(program, {}, jsCallback);
-}
+    QProcess *process = new QProcess;
 
-void Launcher::asyncLaunchWithArgs(const QString &program,
-                                   const QStringList &args,
-                                   const QJSValue &jsCallback)
-{
-    QSharedPointer<QProcess> process(new QProcess(this));
-    connect(process.data(),
-            static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished),
-            this,
-            [=] { return onLaunchFinished(process->readAll(), jsCallback); });
+    auto result = [=] {
+        QJSValue callback = jsCallback;
+        if (callback.isCallable()) {
+            QVariantMap map;
+            map["allStandardOutput"] = process->readAllStandardOutput();
+            map["allStandardError"] = process->readAllStandardError();
+            QJSValue value = jsCallback.engine()->toScriptValue<QVariantMap>(map);
+            callback.call({value});
+        }
+    };
 
-    process->setProgram(program);
-    process->setArguments(args);
+    QObject::connect(process,
+                     static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished),
+                     process,
+                     result);
+
+    process->setProgram(m_program);
+    process->setArguments(m_arguments);
     process->start();
-}
 
-void Launcher::onLaunchFinished(const QString &result, const QJSValue &jsCallback)
-{
-    QJSValue callback = jsCallback;
-    if (callback.isCallable()) {
-        callback.call({QJSValue(result)});
+    if (m_timeout.has_value()) {
+        QTimer::singleShot(m_timeout.value(), process, [=] {
+            process->kill();
+            process->deleteLater();
+            result();
+        });
     }
 }

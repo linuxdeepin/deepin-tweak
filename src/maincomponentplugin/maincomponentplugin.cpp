@@ -32,6 +32,7 @@ MainComponentPlugin::MainComponentPlugin(QObject *parent)
     : QObject(parent)
 {
     pluginListModel = new PluginListModel(this);
+    qmlRegisterType<LauncherCall>("org.deepin.tweak", 1, 0, "LauncherCall");
 }
 
 MainComponentPlugin::~MainComponentPlugin() {}
@@ -46,5 +47,4 @@ void MainComponentPlugin::initialize(QQmlApplicationEngine *engine)
 {
     engine->rootContext()->setContextProperty("pluginListModel", pluginListModel);
     engine->rootContext()->setContextProperty("testFunction", new TestFunctions);
-    engine->rootContext()->setContextProperty("launcher", new Launcher(engine));
 }

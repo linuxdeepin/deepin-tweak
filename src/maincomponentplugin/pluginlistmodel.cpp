@@ -13,9 +13,10 @@ PluginListModel::PluginListModel(QObject *parent)
     const QStringList &locations = QStandardPaths::standardLocations(
         QStandardPaths::AppDataLocation);
     for (const auto &location : locations) {
-        QDir dir(QString("%1/plugins"));
+        QDir dir(QString("%1/plugins").arg(location));
         for (auto d : dir.entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-            items << QString("file://%1/%2/main.qml").arg(dir.path()).arg(d);
+            qDebug() << dir.path();
+            items << QString("file://%1/%2").arg(dir.path()).arg(d);
         }
     }
 }
@@ -35,6 +36,6 @@ QVariant PluginListModel::data(const QModelIndex &index, int role) const
 QHash<int, QByteArray> PluginListModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
-    roles[PathRole] = "qml";
+    roles[PathRole] = "path";
     return roles;
 }
