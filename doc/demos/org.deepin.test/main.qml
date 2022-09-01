@@ -33,7 +33,18 @@ Frame {
                     vv.asyncCall((callback) => {
                       console.log("standard output: \n", callback.allStandardOutput);
                       console.log("standard error: \n", callback.allStandardError);
+                      Launcher.create().program("ls").arguments("/").call()
                     });
+                    let file = File.create("/tmp/test.file");
+                    console.log(typeof FileMode)
+                    console.log(typeof FileMode.ReadOnly);
+                    let open = file.open(FileMode.ReadOnly);
+                    if (open) {
+                      console.log('===== ready read');
+                      console.log(file.readAll());
+                      console.log('===== read all.');
+                    }
+                    console.log('file exist: ', File.exists('/tmp/test.file'));
                   }
               }
         }

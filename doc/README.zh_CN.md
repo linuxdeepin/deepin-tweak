@@ -64,7 +64,89 @@ tweak 提供了 Launcher 模块，在 qml 文件头部使用 `import org.deepin.
 
 ### 读写文件
 
-TODO
+tweak 提供了 File 模块，在 qml 文件头部使用 `import org.deepin.tweak 1.0` 导入 tweak 模块，就可以使用 `File` 对象。
+
+`File` 对象提供了 `create` 方法创建一个执行实例，接收一个文件的绝对路径，返回一个 `FileBackend` 对象。
+
+File 对象还提供了 `exists` 方法，可以不用创建 FileBackend 对象进行文件是否存在的检查。
+
+FileBackend 对象拥有以下方法:
+
+- open
+
+  设置文件的打开方式，可以在 qml 中使用 FileMode 枚举进行设置:
+
+  - NotOpen
+
+    选择不打开文件。
+
+  - ReadOnly
+
+    选择只读，选择此模式将无法使用 write 方法。
+
+  - WriteOnly
+
+    选择只写，选择此模式将无法使用 read 方法。
+
+  - ReadWrite
+
+    选择可读可写，选择此模式可以随意使用 read 与 write 方法。
+
+  - Append
+
+    使用此模式时，write 方法会将内容在文件末尾添加。
+
+  - Truncate
+
+    如果可能，设备在打开之前将被截断。设备的所有早期内容都将丢失。
+
+  - Text
+
+    读取时，行尾终止符将转换为“\n”。写入时，行尾终止符将转换为本地编码，例如 Win32 的“\r\n”。
+
+  - Unbuffered
+
+    设备中的任何缓冲区都会被绕过。
+
+  - NewOnly
+
+    如果要打开的文件已经存在，则失败。只有当文件不存在时才创建并打开它。操作系统保证您是唯一创建和打开该文件的人。注意，这种模式意味着 WriteOnly，并且允许将其与 ReadWrite 结合使用。该标志目前只影响QFile。其他类将来可能会使用这个标志，但在此之前，对QFile以外的任何类使用这个标志可能会导致未定义的行为。
+
+  - ExistingOnly
+
+    如果要打开的文件不存在，则会失败。此标志必须与 ReadOnly、WriteOnly 或 ReadWrite 一起指定。注意，单独使用 ReadOnly 标志是多余的，因为当文件不存在时，ReadOnly 已经失败了。
+
+- close
+
+  关闭已打开的文件。
+
+- flush
+
+  强制刷新缓冲区，将缓冲区的内容实际的写入文件。
+
+- read
+
+  读取指定大小的内容。
+
+- readAll
+
+  读取文件的全部内容。
+
+- write
+
+  写入数据到文件。
+
+- exists
+
+  判读文件是否存在。
+
+- rename
+
+  对文件进行重新命名
+
+- remove
+
+  删除指定文件
 
 ### DBus 调用
 

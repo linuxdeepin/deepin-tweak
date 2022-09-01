@@ -24,6 +24,7 @@
 #include <QUrl>
 
 #include "pluginlistmodel.h"
+#include "staff/file.h"
 #include "staff/launcher.h"
 
 DQUICK_USE_NAMESPACE
@@ -40,6 +41,8 @@ MainComponentPlugin::MainComponentPlugin(QObject *parent)
                                        [=](QQmlEngine *engine, QJSEngine *scriptEngine) {
                                            return new Launcher(engine, scriptEngine);
                                        });
+
+    File::registerType();
 }
 
 MainComponentPlugin::~MainComponentPlugin() {}

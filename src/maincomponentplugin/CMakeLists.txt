@@ -6,6 +6,8 @@ set(MAINCOMPONENNT_SRC
     pluginlistmodel.cpp
     staff/launcher.h
     staff/launcher.cpp
+    staff/file.h
+    staff/file.cpp
 )
 find_package(Qt5 REQUIRED COMPONENTS Core Widgets)
 find_package(Qt5QuickCompiler REQUIRED)
