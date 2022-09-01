@@ -10,10 +10,6 @@ Frame {
     property string author: "justforlxz"
     property string icon: "icon.png"
 
-    LauncherCall {
-        id: launcher
-    }
-
     ColumnLayout {
         Text {
             text: "I'm qml loader content"
@@ -28,7 +24,7 @@ Frame {
             Button {
                 id: button
                 onClicked: {
-                    let vv = launcher.program("ls").arguments("/");
+                    let vv = Launcher.create().program("ls").arguments("/");
                     console.log("sync =====");
                     let sync = vv.call();
                     console.log("standard output: \n", sync.allStandardOutput);

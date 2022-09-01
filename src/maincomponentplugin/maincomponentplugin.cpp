@@ -33,6 +33,13 @@ MainComponentPlugin::MainComponentPlugin(QObject *parent)
 {
     pluginListModel = new PluginListModel(this);
     qmlRegisterType<LauncherCall>("org.deepin.tweak", 1, 0, "LauncherCall");
+    qmlRegisterSingletonType<Launcher>("org.deepin.tweak",
+                                       1,
+                                       0,
+                                       "Launcher",
+                                       [=](QQmlEngine *engine, QJSEngine *scriptEngine) {
+                                           return new Launcher(engine, scriptEngine);
+                                       });
 }
 
 MainComponentPlugin::~MainComponentPlugin() {}

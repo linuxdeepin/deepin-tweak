@@ -14,10 +14,6 @@ TestFunctions::TestFunctions(QObject *parent)
 
 TestFunctions::~TestFunctions() {}
 
-LauncherCall::LauncherCall() {}
-
-LauncherCall::~LauncherCall() {}
-
 QVariantMap LauncherCall::call()
 {
     QScopedPointer<QProcess> process(new QProcess);

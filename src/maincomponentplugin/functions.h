@@ -1,7 +1,9 @@
 #pragma once
 #include <optional>
 #include <QDebug>
+#include <QJSEngine>
 #include <QObject>
+#include <QQmlEngine>
 #include <QStringList>
 #include <QtQml>
 
@@ -19,8 +21,8 @@ class LauncherCall : public QObject
 {
     Q_OBJECT
 public:
-    explicit LauncherCall();
-    ~LauncherCall() override;
+    explicit LauncherCall() {}
+    ~LauncherCall() override {}
 
     Q_INVOKABLE inline LauncherCall *program(const QString &program)
     {
@@ -44,6 +46,29 @@ private:
     QString m_program;
     QStringList m_arguments;
     std::optional<int> m_timeout;
+};
+
+class Launcher : public QObject
+{
+    Q_OBJECT
+public:
+    explicit Launcher(QQmlEngine *engine, QJSEngine *scriptEngine)
+        : QObject(engine)
+        , m_engine(engine)
+        , m_jsEngine(scriptEngine)
+    {}
+    ~Launcher() override {}
+
+    Q_INVOKABLE inline LauncherCall *create()
+    {
+        LauncherCall *call = new LauncherCall;
+        QQmlEngine::setObjectOwnership(call, QQmlEngine::JavaScriptOwnership);
+        return call;
+    }
+
+private:
+    QQmlEngine *m_engine;
+    QJSEngine *m_jsEngine;
 };
 
 // Q_DECLARE_METATYPE(LauncherCall *);

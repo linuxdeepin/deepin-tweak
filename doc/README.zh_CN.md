@@ -42,13 +42,29 @@ deepin-tweak 内置了执行命令、读写文件及 DBus 调用的接口。
 
 ### 执行命令
 
-tweak 提供了 launcher 对象，可以调用 launcher.launch(<program>, [args]) 方法执行一个命令，并获取输出。
+tweak 提供了 Launcher 模块，在 qml 文件头部使用 `import org.deepin.tweak 1.0` 导入 tweak 模块，就可以使用 `Launcher` 对象。
 
-launcher.asyncLaunch(<program>, callback) 方法可以异步执行一个命令，并通过回调函数获取命令输出.
+`Launcher` 对象提供了 `create` 方法创建一个执行实例，并通过链式调用设置相关参数，最终通过 `call` 方法或者 `async` 方法启动执行，并获取结果。
 
-launcher.asyncLaunchWithArgs(<program>, <[args]>, callback) 方法可以异步执行一个命令，并通过回调函数获取命令输出.
+目前支持的参数有:
+
+- program
+
+  设置启动的命令。
+
+- arguments
+
+  设置传递给启动命令的参数。
+
+- timeout
+
+  设置命令超时的时间，默认情况下将一直等待执行结果。
+
+`call` 的返回值与 `asyncCall` 的回调函数是一个对象，拥有 `allStandardOutput` 属性与 `allStandardError` 属性。
 
 ### 读写文件
+
+TODO
 
 ### DBus 调用
 
