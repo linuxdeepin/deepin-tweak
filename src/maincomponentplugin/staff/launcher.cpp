@@ -1,18 +1,4 @@
-#include "functions.h"
-
-#include <QJSValue>
-#include <QMetaType>
-#include <QProcess>
-#include <QQmlContext>
-#include <QQmlEngine>
-#include <QScopedPointer>
-#include <QTimer>
-
-TestFunctions::TestFunctions(QObject *parent)
-    : QObject(parent)
-{}
-
-TestFunctions::~TestFunctions() {}
+#include "launcher.h"
 
 QVariantMap LauncherCall::call()
 {

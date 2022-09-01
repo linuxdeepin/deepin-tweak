@@ -23,8 +23,8 @@
 #include <QQmlContext>
 #include <QUrl>
 
-#include "functions.h"
 #include "pluginlistmodel.h"
+#include "staff/launcher.h"
 
 DQUICK_USE_NAMESPACE
 
@@ -53,5 +53,4 @@ QUrl MainComponentPlugin::mainComponentPath() const
 void MainComponentPlugin::initialize(QQmlApplicationEngine *engine)
 {
     engine->rootContext()->setContextProperty("pluginListModel", pluginListModel);
-    engine->rootContext()->setContextProperty("testFunction", new TestFunctions);
 }

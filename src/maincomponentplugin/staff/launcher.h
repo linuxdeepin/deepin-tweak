@@ -1,4 +1,5 @@
 #pragma once
+
 #include <optional>
 #include <QDebug>
 #include <QJSEngine>
@@ -6,16 +7,6 @@
 #include <QQmlEngine>
 #include <QStringList>
 #include <QtQml>
-
-class TestFunctions : public QObject
-{
-    Q_OBJECT
-public:
-    explicit TestFunctions(QObject *parent = nullptr);
-    ~TestFunctions();
-
-    Q_INVOKABLE QString ping() { return "pong"; }
-};
 
 class LauncherCall : public QObject
 {
@@ -70,5 +61,3 @@ private:
     QQmlEngine *m_engine;
     QJSEngine *m_jsEngine;
 };
-
-// Q_DECLARE_METATYPE(LauncherCall *);
