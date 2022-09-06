@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 #ifndef PLUGINLISTMODEL_H_
 #define PLUGINLISTMODEL_H_
 
