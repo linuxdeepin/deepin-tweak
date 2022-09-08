@@ -1,6 +1,6 @@
-# SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
 
-# SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "file.h"
 
@@ -9,12 +9,12 @@ bool FileBackend::open(const QVariant &mode)
     return file->open(static_cast<QFile::OpenModeFlag>(mode.toInt()));
 }
 
-QByteArray FileBackend::read(qint64 maxSize)
+const QByteArray FileBackend::read(qint64 maxSize)
 {
     return file->read(maxSize);
 }
 
-QByteArray FileBackend::readAll()
+const QByteArray FileBackend::readAll()
 {
     return file->readAll();
 }
@@ -39,7 +39,7 @@ bool FileBackend::remove()
     return file->remove();
 }
 
-bool FileBackend::exists(const QString &file)
+bool FileBackend::exists()
 {
-    return QFile::exists(file);
+  return file->exists();
 }

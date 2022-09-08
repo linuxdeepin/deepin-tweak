@@ -1,6 +1,6 @@
-# SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
 
-# SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 #pragma once
 
@@ -40,55 +40,19 @@ public:
     FileBackend(const QString &file, QObject *parent = nullptr)
         : QObject(parent)
         , file(new QFile(file))
-    {
-        qDebug() << "[File] create object.";
-    }
-    ~FileBackend() override { qDebug() << "[File] delete object."; }
+    {}
+
+    ~FileBackend() override {}
 
     Q_INVOKABLE bool open(const QVariant &mode);
-    Q_INVOKABLE QByteArray read(qint64 maxSize);
-    Q_INVOKABLE QByteArray readAll();
+    Q_INVOKABLE const QByteArray read(qint64 maxSize);
+    Q_INVOKABLE const QByteArray readAll();
     Q_INVOKABLE qint64 write(const QByteArray &data);
     Q_INVOKABLE bool rename(const QString &newName);
     Q_INVOKABLE bool remove();
     Q_INVOKABLE bool flush();
-    Q_INVOKABLE static bool exists(const QString &file);
+    Q_INVOKABLE bool exists();
 
 private:
     std::unique_ptr<QFile> file;
-};
-
-class File : public QObject
-{
-    Q_OBJECT
-public:
-    File(QQmlEngine *engine, QJSEngine *scriptEngine)
-        : m_engine(engine)
-        , m_scriptEngine(scriptEngine)
-    {}
-    ~File() {}
-
-    static void registerType()
-    {
-        qmlRegisterSingletonType<File>("org.deepin.tweak",
-                                       1,
-                                       0,
-                                       "File",
-                                       [=](QQmlEngine *engine, QJSEngine *scriptEngine) {
-                                           return new File(engine, scriptEngine);
-                                       });
-        qmlRegisterUncreatableType<FileBackend>("org.deepin.tweak",
-                                                1,
-                                                0,
-                                                "FileBackend",
-                                                "cannot create filebackend object.");
-        qmlRegisterType<FileMode>("org.deepin.tweak", 1, 0, "FileMode");
-    }
-
-    Q_INVOKABLE FileBackend *create(const QString &file) { return new FileBackend(file); }
-    Q_INVOKABLE inline bool exists(const QString &file) { return FileBackend::exists(file); }
-
-private:
-    QQmlEngine *m_engine;
-    QJSEngine *m_scriptEngine;
 };

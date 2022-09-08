@@ -8,6 +8,7 @@ set(MAINCOMPONENNT_SRC
     staff/launcher.cpp
     staff/file.h
     staff/file.cpp
+    staff/staff.h
 )
 find_package(Qt5 REQUIRED COMPONENTS Core Widgets)
 find_package(Qt5QuickCompiler REQUIRED)

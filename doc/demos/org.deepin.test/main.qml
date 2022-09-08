@@ -24,7 +24,7 @@ Frame {
             Button {
                 id: button
                 onClicked: {
-                    let vv = Launcher.create().program("ls").arguments("/");
+                    let vv = Tweak.Launcher().program("ls").arguments("/");
                     console.log("sync =====");
                     let sync = vv.call();
                     console.log("standard output: \n", sync.allStandardOutput);
@@ -33,9 +33,9 @@ Frame {
                     vv.asyncCall((callback) => {
                       console.log("standard output: \n", callback.allStandardOutput);
                       console.log("standard error: \n", callback.allStandardError);
-                      Launcher.create().program("ls").arguments("/").call()
+                      Tweak.Launcher().program("ls").arguments("/").call()
                     });
-                    let file = File.create("/tmp/test.file");
+                    let file = Tweak.File("/tmp/test.file");
                     console.log(typeof FileMode)
                     console.log(typeof FileMode.ReadOnly);
                     let open = file.open(FileMode.ReadOnly);
@@ -44,7 +44,7 @@ Frame {
                       console.log(file.readAll());
                       console.log('===== read all.');
                     }
-                    console.log('file exist: ', File.exists('/tmp/test.file'));
+                    console.log('file exist: ', Tweak.File('/tmp/test.file').exists());
                   }
               }
         }

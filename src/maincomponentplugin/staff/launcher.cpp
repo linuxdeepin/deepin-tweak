@@ -1,6 +1,6 @@
-# SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
 
-# SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "launcher.h"
 
@@ -32,9 +32,10 @@ void LauncherCall::asyncCall(const QJSValue &jsCallback)
             QJSValue value = jsCallback.engine()->toScriptValue<QVariantMap>(map);
             callback.call({value});
         }
+        process->deleteLater();
     };
 
-    QObject::connect(process,
+    connect(process,
                      static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished),
                      process,
                      result);

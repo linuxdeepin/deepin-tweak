@@ -1,6 +1,6 @@
-# SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
 
-# SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 #pragma once
 
@@ -41,27 +41,4 @@ private:
     QString m_program;
     QStringList m_arguments;
     std::optional<int> m_timeout;
-};
-
-class Launcher : public QObject
-{
-    Q_OBJECT
-public:
-    explicit Launcher(QQmlEngine *engine, QJSEngine *scriptEngine)
-        : QObject(engine)
-        , m_engine(engine)
-        , m_jsEngine(scriptEngine)
-    {}
-    ~Launcher() override {}
-
-    Q_INVOKABLE inline LauncherCall *create()
-    {
-        LauncherCall *call = new LauncherCall;
-        QQmlEngine::setObjectOwnership(call, QQmlEngine::JavaScriptOwnership);
-        return call;
-    }
-
-private:
-    QQmlEngine *m_engine;
-    QJSEngine *m_jsEngine;
 };

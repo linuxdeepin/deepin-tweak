@@ -1,18 +1,17 @@
-# SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
 
-# SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "maincomponentplugin.h"
 
-#include <qvariant.h>
+#include <QVariant>
 
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QUrl>
 
 #include "pluginlistmodel.h"
-#include "staff/file.h"
-#include "staff/launcher.h"
+#include "staff/staff.h"
 
 DQUICK_USE_NAMESPACE
 
@@ -20,16 +19,7 @@ MainComponentPlugin::MainComponentPlugin(QObject *parent)
     : QObject(parent)
 {
     pluginListModel = new PluginListModel(this);
-    qmlRegisterType<LauncherCall>("org.deepin.tweak", 1, 0, "LauncherCall");
-    qmlRegisterSingletonType<Launcher>("org.deepin.tweak",
-                                       1,
-                                       0,
-                                       "Launcher",
-                                       [=](QQmlEngine *engine, QJSEngine *scriptEngine) {
-                                           return new Launcher(engine, scriptEngine);
-                                       });
-
-    File::registerType();
+    registerStaff();
 }
 
 MainComponentPlugin::~MainComponentPlugin() {}
