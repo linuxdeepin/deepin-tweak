@@ -22,7 +22,7 @@ AppLoader {
                     Layout.fillHeight: true
                     Layout.leftMargin: 10
                     Layout.rightMargin: 10
-                    font.pixelSize: 22
+                    font: DTK.fontManager.t3
                 }
                 Loader {
                     id: loader
