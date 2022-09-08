@@ -40,9 +40,11 @@ property string icon: "icon.png"
 
 deepin-tweak 内置了执行命令、读写文件及 DBus 调用的接口。
 
-### 执行命令
+tweak 提供了一个 Tweak 模块，在 qml 文件头部使用 `import org.deepin.tweak 1.0` 导入 tweak 模块，就可以使用 `Tweak` 对象。
 
-tweak 提供了 Launcher 模块，在 qml 文件头部使用 `import org.deepin.tweak 1.0` 导入 tweak 模块，就可以使用 `Launcher` 对象。
+Tweak 对象提供了 Launcher 和 File 方法，用于获取相关的执行对象。
+
+### 执行命令
 
 `Launcher` 对象提供了 `create` 方法创建一个执行实例，并通过链式调用设置相关参数，最终通过 `call` 方法或者 `async` 方法启动执行，并获取结果。
 
@@ -64,13 +66,7 @@ tweak 提供了 Launcher 模块，在 qml 文件头部使用 `import org.deepin.
 
 ### 读写文件
 
-tweak 提供了 File 模块，在 qml 文件头部使用 `import org.deepin.tweak 1.0` 导入 tweak 模块，就可以使用 `File` 对象。
-
-`File` 对象提供了 `create` 方法创建一个执行实例，接收一个文件的绝对路径，返回一个 `FileBackend` 对象。
-
-File 对象还提供了 `exists` 方法，可以不用创建 FileBackend 对象进行文件是否存在的检查。
-
-FileBackend 对象拥有以下方法:
+File 对象拥有以下方法:
 
 - open
 
@@ -147,6 +143,18 @@ FileBackend 对象拥有以下方法:
 - remove
 
   删除指定文件
+
+- seek
+
+  设置 read 函数开始读取的位置
+
+- pos
+
+  获取当前文件 read 的位置
+
+- size
+
+  获取当前文件的大小
 
 ### DBus 调用
 

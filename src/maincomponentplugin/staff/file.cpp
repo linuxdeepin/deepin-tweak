@@ -9,12 +9,17 @@ bool FileBackend::open(const QVariant &mode)
     return file->open(static_cast<QFile::OpenModeFlag>(mode.toInt()));
 }
 
-const QByteArray FileBackend::read(qint64 maxSize)
+void FileBackend::close()
+{
+    return file->close();
+}
+
+QByteArray FileBackend::read(qint64 maxSize)
 {
     return file->read(maxSize);
 }
 
-const QByteArray FileBackend::readAll()
+QByteArray FileBackend::readAll()
 {
     return file->readAll();
 }
@@ -39,7 +44,22 @@ bool FileBackend::remove()
     return file->remove();
 }
 
-bool FileBackend::exists()
+bool FileBackend::exists() const
 {
-  return file->exists();
+    return file->exists();
+}
+
+bool FileBackend::seek(qint64 pos)
+{
+    return file->seek(pos);
+}
+
+qint64 FileBackend::pos() const
+{
+    return file->pos();
+}
+
+qint64 FileBackend::size() const
+{
+    return file->size();
 }

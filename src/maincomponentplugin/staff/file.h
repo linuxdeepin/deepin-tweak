@@ -45,13 +45,17 @@ public:
     ~FileBackend() override {}
 
     Q_INVOKABLE bool open(const QVariant &mode);
-    Q_INVOKABLE const QByteArray read(qint64 maxSize);
-    Q_INVOKABLE const QByteArray readAll();
+    Q_INVOKABLE void close();
+    Q_INVOKABLE QByteArray read(qint64 maxSize);
+    Q_INVOKABLE QByteArray readAll();
     Q_INVOKABLE qint64 write(const QByteArray &data);
     Q_INVOKABLE bool rename(const QString &newName);
     Q_INVOKABLE bool remove();
     Q_INVOKABLE bool flush();
-    Q_INVOKABLE bool exists();
+    Q_INVOKABLE bool exists() const;
+    Q_INVOKABLE bool seek(qint64 pos);
+    Q_INVOKABLE qint64 pos() const;
+    Q_INVOKABLE qint64 size() const;
 
 private:
     std::unique_ptr<QFile> file;
