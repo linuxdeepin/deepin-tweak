@@ -1,0 +1,17 @@
+Source: deepin-tweak
+Section: admin
+Priority: optional
+Maintainer: Deepin Sysdev <sysdev@deepin.com>
+Build-Depends:
+ debhelper-compat (= 13)
+ cmake,
+ qtbase5-dev,
+ qtdeclarative5-dev,
+Standards-Version: 4.6.0
+Rules-Requires-Root: no
+
+Package: deepin-tweak
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: deepin tweak tools
+ Advanced customization features for communities
