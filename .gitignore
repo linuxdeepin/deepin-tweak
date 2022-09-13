@@ -28,7 +28,7 @@ ui_*.h
 *.qmlc
 *.jsc
 Makefile*
-*build-*
+build-*
 *.qm
 *.prl
 
@@ -50,3 +50,8 @@ compile_commands.json
 
 # QtCreator local machine specific files for imported projects
 *creator.user*
+
+# vscode
+.vscode/
+build/
+.ccls*
