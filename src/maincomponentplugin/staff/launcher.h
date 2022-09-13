@@ -34,11 +34,18 @@ public:
         m_timeout = timeout;
         return this;
     }
+    Q_INVOKABLE inline LauncherCall *workingDir(const QString &workingDir)
+    {
+        m_workingDir = workingDir;
+        return this;
+    }
     Q_INVOKABLE QVariantMap call();
     Q_INVOKABLE void asyncCall(const QJSValue &jsCallback);
+    Q_INVOKABLE void startDetached();
 
 private:
     QString m_program;
     QStringList m_arguments;
+    QString m_workingDir;
     std::optional<int> m_timeout;
 };

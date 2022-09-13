@@ -9,6 +9,7 @@ QVariantMap LauncherCall::call()
     QScopedPointer<QProcess> process(new QProcess);
     process->setProgram(m_program);
     process->setArguments(m_arguments);
+    process->setWorkingDirectory(m_workingDir);
     process->start();
     process->waitForFinished(m_timeout.value_or(-1));
 
@@ -36,12 +37,13 @@ void LauncherCall::asyncCall(const QJSValue &jsCallback)
     };
 
     connect(process,
-                     static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished),
-                     process,
-                     result);
+            static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished),
+            process,
+            result);
 
     process->setProgram(m_program);
     process->setArguments(m_arguments);
+    process->setWorkingDirectory(m_workingDir);
     process->start();
 
     if (m_timeout.has_value()) {
@@ -51,4 +53,9 @@ void LauncherCall::asyncCall(const QJSValue &jsCallback)
             result();
         });
     }
+}
+
+void LauncherCall::startDetached()
+{
+    QProcess::startDetached(m_program, m_arguments, m_workingDir);
 }
