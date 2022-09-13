@@ -3,10 +3,14 @@ Section: admin
 Priority: optional
 Maintainer: Deepin Sysdev <sysdev@deepin.com>
 Build-Depends:
- debhelper-compat (= 13)
+ debhelper-compat (= 12),
  cmake,
  qtbase5-dev,
  qtdeclarative5-dev,
+ libdtkcommon-dev,
+ libdtkcore-dev,
+ libdtkgui-dev,
+ libdtkdeclarative-dev,
 Standards-Version: 4.6.0
 Rules-Requires-Root: no
 
