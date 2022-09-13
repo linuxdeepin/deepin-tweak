@@ -10,8 +10,8 @@ DQUICK_USE_NAMESPACE
 
 int main(int argc, char *argv[])
 {
-#ifdef PLUGINPATH
-    DAppLoader appLoader(APP_NAME, PLUGINPATH);
+#ifdef LOCALLIBPATH
+    DAppLoader appLoader(APP_NAME, LOCALLIBPATH);
 #else
     DAppLoader appLoader(APP_NAME);
 #endif

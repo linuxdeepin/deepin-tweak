@@ -42,7 +42,7 @@ deepin-tweak 内置了执行命令、读写文件及 DBus 调用的接口。
 
 tweak 提供了一个 Tweak 模块，在 qml 文件头部使用 `import org.deepin.tweak 1.0` 导入 tweak 模块，就可以使用 `Tweak` 对象。
 
-Tweak 对象提供了 Launcher 和 File 方法，用于获取相关的执行对象。
+Tweak 对象提供了 newLauncher newSettings 和 newFile 方法，用于获取相关的执行对象。
 
 ### 执行命令
 
@@ -155,6 +155,27 @@ File 对象拥有以下方法:
 - size
 
   获取当前文件的大小
+### settings
+
+- value
+
+  获取某个 key 对应的值
+
+- setValue
+
+  设置某个 key 的值
+
+- beginGroup
+
+  设置读取的组，切换不同的组时必须先调用 endGroup 方法。
+
+- endGroup
+
+  结束组的标记
+
+- keys
+
+  获取所有的 key
 
 ### DBus 调用
 

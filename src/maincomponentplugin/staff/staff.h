@@ -6,6 +6,7 @@
 
 #include "file.h"
 #include "launcher.h"
+#include "settings.h"
 
 #include <QJSEngine>
 #include <QObject>
@@ -23,16 +24,22 @@ public:
 
     ~Staff() override {}
 
-    Q_INVOKABLE inline LauncherCall *Launcher()
+    Q_INVOKABLE inline LauncherCall *newLauncher()
     {
         auto *call = new LauncherCall;
         QQmlEngine::setObjectOwnership(call, QQmlEngine::JavaScriptOwnership);
         return call;
     }
 
-    Q_INVOKABLE FileBackend *File(const QString &file)
+    Q_INVOKABLE FileBackend *newFile(const QString &file)
     {
         auto *call = new FileBackend(file);
+        QQmlEngine::setObjectOwnership(call, QQmlEngine::JavaScriptOwnership);
+        return call;
+    }
+
+    Q_INVOKABLE SettingsBackend *newSettings(const QString& file) {
+        auto *call = new SettingsBackend(file);
         QQmlEngine::setObjectOwnership(call, QQmlEngine::JavaScriptOwnership);
         return call;
     }
@@ -55,6 +62,11 @@ static void registerStaff()
                                              0,
                                              "LauncherCall",
                                              "cannot create LauncherCall object.");
+    qmlRegisterUncreatableType<SettingsBackend>("org.deepin.tweak",
+                                             1,
+                                             0,
+                                             "SettingsBackend",
+                                             "cannot create Settings object.");
     qmlRegisterSingletonType<Staff>("org.deepin.tweak",
                                     1,
                                     0,

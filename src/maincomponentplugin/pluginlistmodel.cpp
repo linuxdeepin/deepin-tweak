@@ -14,8 +14,14 @@
 PluginListModel::PluginListModel(QObject *parent)
     : QAbstractListModel(parent)
 {
+#ifdef PLUGINPATH
+    QStringList locations = QStandardPaths::standardLocations(
+        QStandardPaths::AppDataLocation);
+    locations.insert(0, PLUGINPATH);
+#else
     const QStringList &locations = QStandardPaths::standardLocations(
         QStandardPaths::AppDataLocation);
+#endif
     for (const auto &location : locations) {
         QDir dir(QString("%1/plugins").arg(location));
         for (auto d : dir.entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {

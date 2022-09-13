@@ -9,6 +9,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QUrl>
+#include <QProcessEnvironment>
 
 #include "pluginlistmodel.h"
 #include "staff/staff.h"
@@ -33,4 +34,5 @@ QUrl MainComponentPlugin::mainComponentPath() const
 void MainComponentPlugin::initialize(QQmlApplicationEngine *engine)
 {
     engine->rootContext()->setContextProperty("pluginListModel", pluginListModel);
+    engine->rootContext()->setContextProperty("env", QProcessEnvironment::systemEnvironment().toStringList());
 }
