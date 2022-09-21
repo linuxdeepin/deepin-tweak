@@ -5,27 +5,17 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.7
+import Qt.labs.platform 1.1
 import org.deepin.dtk 1.0
 import org.deepin.tweak 1.0
 
 RowLayout {
+    id: frame
     property string displayName: "Title height"
     property string description: "Change window title height"
     property string version: "1.0.0"
     property string author: "justforlxz"
     property string icon: "icon.png"
-    id: frame
-
-    function getEnv(_key) {
-        for (const p of env) {
-            const key = p.split('=')[0];
-            const value = p.slice(key.length + 1, p.length);
-            if (key === _key) {
-                return value;
-            }
-        }
-        return '';
-    }
 
     Row {
         spacing: 10
@@ -44,10 +34,14 @@ RowLayout {
         Button {
             Layout.alignment: Qt.AlignHCenter
             id: accept
-            text: qsTr("Accept")
+            text: qsTr("Apply")
             onClicked: () => {
                            const setTitleBar = (theme, value) => {
-                               const path = getEnv('HOME') + '/.local/share/deepin/themes/deepin/'+ theme + '/titlebar.ini';
+                               const paths = StandardPaths.standardLocations(StandardPaths.GenericDataLocation)
+                               if (paths.length === 0) {
+                                   return;
+                               }
+                               const path = paths[0] + '/deepin/themes/deepin/'+ theme + '/titlebar.ini';
                                const settings = Tweak.newSettings(path);
                                settings.beginGroup('Active');
                                settings.setValue('height', value);
@@ -68,8 +62,12 @@ RowLayout {
         }
     }
     Component.onCompleted: () => {
-                               const value = getEnv('HOME') + '/.local/share/deepin/themes/deepin/light/titlebar.ini';
-                               const settings = Tweak.newSettings(value);
+                               const paths = StandardPaths.standardLocations(StandardPaths.GenericDataLocation)
+                               if (paths.length === 0) {
+                                   return;
+                               }
+                               const path = paths[0] + '/deepin/themes/deepin/light/titlebar.ini';
+                               const settings = Tweak.newSettings(path);
                                settings.beginGroup('Active');
                                const height = settings.value('height');
                                if (height !== undefined) {

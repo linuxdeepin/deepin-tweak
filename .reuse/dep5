@@ -3,6 +3,21 @@ Upstream-Name: deepin-tweak
 Upstream-Contact: UnionTech Software Technology Co., Ltd. <>
 Source: https://github.com/linuxdeepin/deepin-tweak
 
+# .github
+Files: .github/*
+Copyright: None
+License: CC0-1.0
+
+# debian rpm archlinux
+Files: debian/* rpm/* archlinux/*
+Copyright: None
+License: CC0-1.0
+
+# desktop file
+FIles: deepin-tweak.desktop
+Copyright: None
+License: CC0-1.0
+
 # README
 Files: *README.md *README.zh_CN.md CHANGELOG.md
 Copyright: UnionTech Software Technology Co., Ltd.
@@ -14,12 +29,7 @@ Copyright: None
 License: CC0-1.0
 
 # CMakeList
-Files: src/preloadplugin/CMakeLists.txt src/maincomponentplugin/CMakeLists.txt src/main/CMakeLists.txt src/CMakeLists.txt
-Copyright: None
-License: CC0-1.0
-
-# CMakeList
-Files: CMakeLists.txt
+Files: CMakeLists.txt src/CMakeLists.txt src/**/CMakeLists.txt
 Copyright: None
 License: CC0-1.0
 
