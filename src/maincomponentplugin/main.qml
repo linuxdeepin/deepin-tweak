@@ -19,7 +19,7 @@ AppLoader {
             delegate: ColumnLayout {
                 required property string path
                 width: listView.width
-                spacing: listView.spacing
+                spacing: listView.spacing || 10
                 Label {
                     id: label
                     Layout.fillWidth: true

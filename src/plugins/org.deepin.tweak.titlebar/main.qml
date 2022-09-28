@@ -9,21 +9,63 @@ import Qt.labs.platform 1.1
 import org.deepin.dtk 1.0
 import org.deepin.tweak 1.0
 
-RowLayout {
+ColumnLayout {
     id: frame
+    spacing: 10
     property string displayName: "Title height"
     property string description: "Change window title height"
     property string version: "1.0.0"
     property string author: "justforlxz"
     property string icon: "icon.png"
 
+    function loadConfig() {
+        const paths = StandardPaths.standardLocations(StandardPaths.GenericDataLocation)
+        if (paths.length === 0) {
+            return;
+        }
+        const path = paths[0] + '/deepin/themes/deepin/light/titlebar.ini';
+        const settings = Tweak.newSettings(path);
+        settings.beginGroup('Active');
+        const height = settings.value('height');
+        if (height !== undefined) {
+            control.value = height
+        }
+    }
+
+    function setHeight(value) {
+        const setTitleBar = function(theme, value) {
+            const paths = StandardPaths.standardLocations(StandardPaths.GenericDataLocation)
+            if (paths.length === 0) {
+                return;
+            }
+            const path = paths[0] + '/deepin/themes/deepin/'+ theme + '/titlebar.ini';
+            const settings = Tweak.newSettings(path);
+            settings.beginGroup('Active');
+            settings.setValue('height', value);
+            settings.endGroup();
+            settings.beginGroup('Inactive');
+            settings.setValue('height', value);
+        }
+        setTitleBar('light', value);
+        setTitleBar('dark', value);
+
+        // restart wm
+        // TODO: use dbus but wait for v23
+        const wm = Tweak.newLauncher();
+        wm.program('/usr/bin/kwin_no_scale');
+        wm.arguments(['--replace']);
+        wm.startDetached();
+    }
+
     Row {
+        Layout.alignment: Qt.AlignHCenter
         spacing: 10
         SpinBox {
             id: control
             from: 0
             to: 9999
-            value: 50
+            value: 40
+            Layout.alignment: Qt.AlignHCenter
 
             validator: IntValidator {
                 locale: control.locale.name
@@ -32,46 +74,24 @@ RowLayout {
             }
         }
         Button {
-            Layout.alignment: Qt.AlignHCenter
-            id: accept
-            text: qsTr("Apply")
-            onClicked: () => {
-                           const setTitleBar = (theme, value) => {
-                               const paths = StandardPaths.standardLocations(StandardPaths.GenericDataLocation)
-                               if (paths.length === 0) {
-                                   return;
-                               }
-                               const path = paths[0] + '/deepin/themes/deepin/'+ theme + '/titlebar.ini';
-                               const settings = Tweak.newSettings(path);
-                               settings.beginGroup('Active');
-                               settings.setValue('height', value);
-                               settings.endGroup();
-                               settings.beginGroup('Inactive');
-                               settings.setValue('height', value);
-                           }
-                           setTitleBar('light', control.value);
-                           setTitleBar('dark', control.value);
-
-                           // restart wm
-                           // TODO: use dbus but wait for v23
-                           const wm = Tweak.newLauncher();
-                           wm.program('/usr/bin/kwin_no_scale');
-                           wm.arguments(['--replace']);
-                           wm.startDetached();
-                       }
+            Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+            text: qsTr("Reset to default")
+            onClicked: {
+                setHeight(40)
+                loadConfig()
+            }
         }
     }
-    Component.onCompleted: () => {
-                               const paths = StandardPaths.standardLocations(StandardPaths.GenericDataLocation)
-                               if (paths.length === 0) {
-                                   return;
-                               }
-                               const path = paths[0] + '/deepin/themes/deepin/light/titlebar.ini';
-                               const settings = Tweak.newSettings(path);
-                               settings.beginGroup('Active');
-                               const height = settings.value('height');
-                               if (height !== undefined) {
-                                   control.value = height
-                               }
-                           }
+
+    Button {
+        Layout.alignment: Qt.AlignHCenter
+        Layout.fillWidth: true
+        Layout.leftMargin: 15
+        Layout.rightMargin: 15
+        id: accept
+        text: qsTr("Apply")
+        onClicked: setHeight(control.value)
+    }
+
+    Component.onCompleted: loadConfig()
 }
