@@ -42,9 +42,9 @@ deepin-tweak 内置了执行命令、读写文件及 DBus 调用的接口。
 
 tweak 提供了一个 Tweak 模块，在 qml 文件头部使用 `import org.deepin.tweak 1.0` 导入 tweak 模块，就可以使用 `Tweak` 对象。
 
-Tweak 对象提供了 newLauncher newSettings 和 newFile 方法，用于获取相关的执行对象。
+Tweak 对象提供了以下方法用于获取特定功能支持的对象。
 
-### 执行命令
+### 执行命令(newLauncher)
 
 `Launcher` 对象提供了 `create` 方法创建一个执行实例，并通过链式调用设置相关参数，最终通过 `call` 方法或者 `async` 方法启动执行，并获取结果。
 
@@ -64,7 +64,9 @@ Tweak 对象提供了 newLauncher newSettings 和 newFile 方法，用于获取�
 
 `call` 的返回值与 `asyncCall` 的回调函数是一个对象，拥有 `allStandardOutput` 属性与 `allStandardError` 属性。
 
-### 读写文件
+### 读写文件(newFile)
+
+需要传入 File 对象操作的文件路径。
 
 File 对象拥有以下方法:
 
@@ -155,7 +157,10 @@ File 对象拥有以下方法:
 - size
 
   获取当前文件的大小
-### settings
+
+### settings(newSettings)
+
+需要传入操作的 ini 配置文件的路径。
 
 - value
 
@@ -176,6 +181,38 @@ File 对象拥有以下方法:
 - keys
 
   获取所有的 key
+
+### GSettings(newGSettings)
+
+需要传递初始化的 gsettings schema id 和 path。
+
+- changed
+
+  传递一个函数签名为 (key, value) 的回调函数，回调函数将会在 schema id 下的值发生变化时调用。
+
+- contains
+
+  判断 schema id 是否包含指定的 key。
+
+- get
+
+  获取指定 key 对应的值。
+
+- set
+
+  设置指定的 key 对应的值。
+
+- keys
+
+  获取 schema id 所有的 key。
+
+- choices
+
+  列出指定 key 可选择的值。
+
+- reset
+
+  将指定 key 重设为默认值。
 
 ### DBus 调用
 
