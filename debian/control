@@ -5,12 +5,14 @@ Maintainer: Deepin Sysdev <sysdev@deepin.com>
 Build-Depends:
  debhelper-compat (= 12),
  cmake,
+ pkg-config,
  qtbase5-dev,
  qtdeclarative5-dev,
  libdtkcommon-dev,
  libdtkcore-dev,
  libdtkgui-dev,
  libdtkdeclarative-dev,
+ libgsettings-qt-dev,
 Standards-Version: 4.6.0
 Rules-Requires-Root: no
 

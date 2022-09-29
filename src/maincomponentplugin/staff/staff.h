@@ -5,6 +5,7 @@
 #pragma once
 
 #include "file.h"
+#include "gsettings.h"
 #include "launcher.h"
 #include "settings.h"
 
@@ -38,8 +39,17 @@ public:
         return call;
     }
 
-    Q_INVOKABLE SettingsBackend *newSettings(const QString& file) {
+    Q_INVOKABLE SettingsBackend *newSettings(const QString &file)
+    {
         auto *call = new SettingsBackend(file);
+        QQmlEngine::setObjectOwnership(call, QQmlEngine::JavaScriptOwnership);
+        return call;
+    }
+
+    Q_INVOKABLE GSettingsBackend *newGSettings(const QByteArray &schema_id,
+                                               const QByteArray &path = QByteArray())
+    {
+        auto *call = new GSettingsBackend(schema_id, path);
         QQmlEngine::setObjectOwnership(call, QQmlEngine::JavaScriptOwnership);
         return call;
     }
@@ -63,10 +73,15 @@ static void registerStaff()
                                              "LauncherCall",
                                              "cannot create LauncherCall object.");
     qmlRegisterUncreatableType<SettingsBackend>("org.deepin.tweak",
-                                             1,
-                                             0,
-                                             "SettingsBackend",
-                                             "cannot create Settings object.");
+                                                1,
+                                                0,
+                                                "SettingsBackend",
+                                                "cannot create Settings object.");
+    qmlRegisterUncreatableType<GSettingsBackend>("org.deepin.tweak",
+                                                 1,
+                                                 0,
+                                                 "GSettingsBackend",
+                                                 "cannot create GSettings object.");
     qmlRegisterSingletonType<Staff>("org.deepin.tweak",
                                     1,
                                     0,
