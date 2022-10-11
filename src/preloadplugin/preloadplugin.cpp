@@ -4,6 +4,9 @@
 
 #include "preloadplugin.h"
 
+#include <QGuiApplication>
+#include <QLocale>
+#include <QTranslator>
 #include <QUrl>
 
 DQUICK_USE_NAMESPACE
@@ -17,6 +20,18 @@ PreloadPlugin::PreloadPlugin(QObject *parent)
 PreloadPlugin::~PreloadPlugin()
 {
 
+}
+
+QGuiApplication *PreloadPlugin::creatApplication(int &argc, char **argv) {
+
+  QGuiApplication* app = new QGuiApplication(argc, argv);
+
+  QTranslator* translator = new QTranslator();
+  if (translator->load(QLocale::system().name(), ":/resources/translations/")) {
+      app->installTranslator(translator);
+  }
+
+  return app;
 }
 
 QUrl PreloadPlugin::preloadComponentPath() const

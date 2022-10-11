@@ -12,8 +12,8 @@ import org.deepin.tweak 1.0
 ColumnLayout {
     id: frame
     spacing: 10
-    property string displayName: "Title height"
-    property string description: "Change window title height"
+    property string displayName: qsTr("Title height")
+    property string description: qsTr("Change window title height")
     property string version: "1.0.0"
     property string author: "justforlxz"
     property string icon: "icon.png"

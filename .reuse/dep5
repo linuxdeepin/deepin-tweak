@@ -24,12 +24,12 @@ Copyright: UnionTech Software Technology Co., Ltd.
 License: CC-BY-4.0
 
 # Project file
-Files: *.pro *.prf *.pri
+Files: *.pro *.prf *.pri *.qrc
 Copyright: None
 License: CC0-1.0
 
-# CMakeList
-Files: CMakeLists.txt src/CMakeLists.txt src/**/CMakeLists.txt
+# Qt ts files
+Files: translations/*.ts plugins/**/translations/*.ts
 Copyright: None
 License: CC0-1.0
 
