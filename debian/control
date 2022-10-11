@@ -13,6 +13,7 @@ Build-Depends:
  libdtkgui-dev,
  libdtkdeclarative-dev,
  libgsettings-qt-dev,
+ qttools5-dev-tools,
 Standards-Version: 4.6.0
 Rules-Requires-Root: no
 

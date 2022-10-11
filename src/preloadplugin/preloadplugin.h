@@ -18,6 +18,7 @@ public:
     ~PreloadPlugin() override;
 
     virtual QUrl preloadComponentPath() const override;
+    virtual QGuiApplication *creatApplication(int &argc, char **argv) override;
 };
 
 #endif // PRELOADPLUGIN_H

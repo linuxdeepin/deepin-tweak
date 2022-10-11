@@ -10,6 +10,8 @@
 #include <QStandardPaths>
 #include <QVariant>
 #include <QtGlobal>
+#include <QTranslator>
+#include <QCoreApplication>
 
 PluginListModel::PluginListModel(QObject *parent)
     : QAbstractListModel(parent)
@@ -27,6 +29,11 @@ PluginListModel::PluginListModel(QObject *parent)
         for (auto d : dir.entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
             qDebug() << dir.path();
             items << QString("file://%1/%2").arg(dir.path()).arg(d);
+            // load translation
+            QTranslator* translator = new QTranslator();
+            if (translator->load(QLocale::system().name(), QString("%1/%2/translations").arg(dir.path()).arg(d))) {
+                qApp->installTranslator(translator);
+            }
         }
     }
 }
