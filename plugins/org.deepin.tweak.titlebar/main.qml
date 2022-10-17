@@ -57,8 +57,7 @@ ColumnLayout {
         wm.startDetached();
     }
 
-    Row {
-        Layout.alignment: Qt.AlignHCenter
+    RowLayout {
         spacing: 10
         SpinBox {
             id: control
@@ -66,6 +65,7 @@ ColumnLayout {
             to: 9999
             value: 40
             Layout.alignment: Qt.AlignHCenter
+            Layout.fillWidth: true
 
             validator: IntValidator {
                 locale: control.locale.name
@@ -86,8 +86,6 @@ ColumnLayout {
     Button {
         Layout.alignment: Qt.AlignHCenter
         Layout.fillWidth: true
-        Layout.leftMargin: 15
-        Layout.rightMargin: 15
         id: accept
         text: qsTr("Apply")
         onClicked: setHeight(control.value)

@@ -1,5 +1,17 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>qml/Category.qml</file>
+        <file>qml/CategoryModel.qml</file>
+        <file>qml/Content.qml</file>
+        <file>qml/MainPage.qml</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file alias="Application.png">images/Application.png</file>
+        <file alias="BootMenu.png">images/BootMenu.png</file>
+        <file alias="DE.png">images/DE.png</file>
+        <file alias="Environment.png">images/Environment.png</file>
+        <file alias="Index.png">images/Index.png</file>
+        <file alias="Kernel.png">images/Kernel.png</file>
     </qresource>
 </RCC>

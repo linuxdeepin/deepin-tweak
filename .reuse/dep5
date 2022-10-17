@@ -38,6 +38,11 @@ Files: *.qrc
 Copyright: None
 License: CC0-1.0
 
+# Icon files
+Files: src/maincomponentplugin/images/* src/preloadplugin/logo.svg
+Copyright: Remix
+License: Apache-2.0
+
 # Setting file
 Files: *.in
 Copyright: None
