@@ -5,6 +5,7 @@
 import QtQuick 2.11
 import QtQuick.Controls 2.4
 import QtQuick.Window 2.0
+import QtQuick.Layouts 1.15
 import org.deepin.dtk 1.0
 import "."
 
@@ -24,15 +25,48 @@ import "."
     默认情况进行主窗口填充。当指定大小后，将按照控件大小和位置进行布局。
  */
 ApplicationWindow {
-    id: window
+    id: root
     visible: true
-    width: 500
-    height: 700
+    width: 800
+    height: 500
     title: qsTr("Deepin Tweak")
-    flags: Qt.WindowMinButtonsHint | Qt.WindowCloseButtonHint | Qt.WindowTitleHint
-    header: TitleBar {}
+    flags: Qt.WindowMinButtonsHint | Qt.WindowCloseButtonHint | Qt.FramelessWindowHint
+    header: TitleBar {
+        //enableInWindowBlendBlur: true
+        leftContent: RowLayout {
+            Image {
+                Layout.preferredHeight: 26
+                Layout.preferredWidth: 26
+                Layout.leftMargin: 10
+                source: "logo.svg"
+                fillMode: Image.PreserveAspectFit
+            }
+            Text {
+                text: qsTr('Deepin Tweak')
+                Layout.alignment: Qt.AlignVCenter
+                font.pointSize: 24
+            }
+        }
+    }
+    color: 'transparent'
+    background: Rectangle {
+        color: Qt.rgba(1, 1, 1, 0.7)
+        // FIXME: 220 is 200(left) + 20(margin)
+        Rectangle {
+            color: Qt.rgba(1, 1, 1, 0.4)
+            x: 220
+            y: 0
+            width: root.width - 220
+            height: root.height
+            radius: 15
+        }
+    }
 
     DWindow.enabled: true
+    DWindow.windowRadius: 16
+    DWindow.enableSystemResize: false // TODO: not disable WM max window
+    DWindow.enableSystemMove: true // TODO: not working
+    DWindow.enableBlurWindow: true // TODO: not working
     DWindow.loadingOverlay: Rectangle {
         color: palette.window
         BusyIndicator {
