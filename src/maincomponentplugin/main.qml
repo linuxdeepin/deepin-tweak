@@ -11,8 +11,7 @@ AppLoader {
         RowLayout {
             anchors.fill: parent
             Loader {
-                Layout.leftMargin: 10
-                Layout.rightMargin: 10
+                Layout.margins: 10
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 source: 'qml/MainPage.qml'

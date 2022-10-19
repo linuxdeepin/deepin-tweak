@@ -3,8 +3,14 @@
         <file>main.qml</file>
         <file>qml/Category.qml</file>
         <file>qml/CategoryModel.qml</file>
-        <file>qml/Content.qml</file>
         <file>qml/MainPage.qml</file>
+        <file>qml/Categories/Index.qml</file>
+        <file>qml/Categories/DE.qml</file>
+        <file>qml/Categories/Application.qml</file>
+        <file>qml/Categories/Kernel.qml</file>
+        <file>qml/Categories/Environment.qml</file>
+        <file>qml/Categories/BootMenu.qml</file>
+        <file>qml/Categories/Other.qml</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="Application.png">images/Application.png</file>
@@ -13,5 +19,6 @@
         <file alias="Environment.png">images/Environment.png</file>
         <file alias="Index.png">images/Index.png</file>
         <file alias="Kernel.png">images/Kernel.png</file>
+        <file alias="Other.svg">images/Other.svg</file>
     </qresource>
 </RCC>

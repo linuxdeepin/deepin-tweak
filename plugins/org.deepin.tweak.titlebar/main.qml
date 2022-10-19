@@ -16,7 +16,7 @@ ColumnLayout {
     property string description: qsTr("Change window title height")
     property string version: "1.0.0"
     property string author: "justforlxz"
-    property string icon: "icon.png"
+    property string icon: "icon.svg"
 
     function loadConfig() {
         const paths = StandardPaths.standardLocations(StandardPaths.GenericDataLocation)
@@ -59,6 +59,10 @@ ColumnLayout {
 
     RowLayout {
         spacing: 10
+        Layout.fillWidth: true
+        Layout.topMargin: 10
+        Layout.leftMargin: 10
+        Layout.rightMargin: 10
         SpinBox {
             id: control
             from: 0
@@ -83,9 +87,16 @@ ColumnLayout {
         }
     }
 
+    Item {
+        Layout.fillHeight: true
+    }
+
     Button {
-        Layout.alignment: Qt.AlignHCenter
+        Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
         Layout.fillWidth: true
+        Layout.leftMargin: 10
+        Layout.rightMargin: 10
+        Layout.bottomMargin: 10
         id: accept
         text: qsTr("Apply")
         onClicked: setHeight(control.value)
