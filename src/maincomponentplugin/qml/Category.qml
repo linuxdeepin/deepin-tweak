@@ -25,8 +25,7 @@ ListView {
             y: 8
         }
     }
-    delegate:
-        Rectangle {
+    delegate: Rectangle {
         id: item
         radius: 10
         height: row.height

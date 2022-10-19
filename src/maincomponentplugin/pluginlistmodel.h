@@ -9,6 +9,7 @@
 
 #include <QAbstractListModel>
 #include <QList>
+#include <QMutex>
 
 class PluginListModel : public QAbstractListModel
 {
@@ -25,6 +26,8 @@ public:
 
 private:
     QStringList items;
+    QObjectList objectList;
+    QMutex *mutex;
 };
 
 #endif // PLUGINLISTMODEL_H_
