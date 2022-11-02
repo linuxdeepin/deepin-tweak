@@ -31,6 +31,10 @@ QGuiApplication *PreloadPlugin::creatApplication(int &argc, char **argv) {
       app->installTranslator(translator);
   }
 
+  app->setApplicationName("deepin-tweak");
+  app->setApplicationVersion("1.0.0");
+  app->setApplicationDisplayName(tr("Deepin Tweak"));
+
   return app;
 }
 

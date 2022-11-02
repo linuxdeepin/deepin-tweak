@@ -26,8 +26,6 @@ public:
 
 private:
     QStringList items;
-    QObjectList objectList;
-    QMutex *mutex;
 };
 
 #endif // PLUGINLISTMODEL_H_

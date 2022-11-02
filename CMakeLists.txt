@@ -21,7 +21,7 @@ find_package(QT NAMES Qt5 REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
 find_package(DtkDeclarative REQUIRED)
 
-if (NOT CMAKE_BUILD_TYPE STREQUAL "Release")
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_definitions(-DPLUGINPATH="${CMAKE_CURRENT_SOURCE_DIR}")
 endif()
 
