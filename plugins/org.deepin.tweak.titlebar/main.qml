@@ -16,7 +16,7 @@ ColumnLayout {
     property string description: qsTr("Change window title height")
     property string version: "1.0.0"
     property string author: "justforlxz"
-    property string icon: "icon.svg"
+    property string icon: "icon.png"
 
     function loadConfig() {
         const paths = StandardPaths.standardLocations(StandardPaths.GenericDataLocation)

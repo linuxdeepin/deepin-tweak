@@ -14,6 +14,7 @@ RowLayout {
         clip: true
         Layout.alignment: Qt.AlignVCenter
         // TODO: not align to VCenter
+        // NOTE: limit show five item
         Layout.minimumHeight: 5 * 36
         Layout.maximumHeight: parent.height
         Layout.preferredWidth: 180
@@ -102,6 +103,8 @@ RowLayout {
         id: view
         Layout.fillHeight: true
         Layout.fillWidth: true
+        Layout.bottomMargin: 10
+        Layout.rightMargin: 10
         color: 'white'
         radius: 15
 
@@ -117,3 +120,4 @@ RowLayout {
         }
     }
 }
+

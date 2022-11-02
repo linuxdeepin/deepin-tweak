@@ -47,19 +47,37 @@ ApplicationWindow {
                 font.pointSize: 24
             }
         }
+        aboutDialog: AboutDialog {
+            modality: Qt.NonModal
+            version: qsTr(String("Version: %1").arg(Qt.application.version))
+            productName: qsTr('Deepin Tweak')
+            companyLogo: "file://" + DTK.deepinDistributionOrgLogo
+            websiteName: "deepin community"
+            websiteLink: "https://github.com/linuxdeepin/deepin-tweak"
+            license: qsTr(String("%1 is released under %2").arg('Deepin Tweak').arg('GPLv3'))
+            width: 300 // FIXME: default width only 50px.
+        }
     }
     color: 'transparent'
     background: Rectangle {
         color: Qt.rgba(1, 1, 1, 0.7)
         // FIXME: 220 is 200(left) + 20(margin)
         Rectangle {
-            color: Qt.rgba(1, 1, 1, 0.4)
+            id: cover
             x: 220
             y: 0
             width: root.width - 220
             height: root.height
             radius: 15
         }
+    }
+
+    function resetCoverColor() {
+        cover.color = Qt.rgba(1, 1, 1, 0.4)
+    }
+
+    function setCoverColor(color) {
+        cover.color = color
     }
 
     DWindow.enabled: true

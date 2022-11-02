@@ -4,12 +4,7 @@
         <file>qml/Category.qml</file>
         <file>qml/CategoryModel.qml</file>
         <file>qml/MainPage.qml</file>
-        <file>qml/Categories/Index.qml</file>
-        <file>qml/Categories/DE.qml</file>
-        <file>qml/Categories/Application.qml</file>
-        <file>qml/Categories/Kernel.qml</file>
-        <file>qml/Categories/Environment.qml</file>
-        <file>qml/Categories/BootMenu.qml</file>
+        <file>qml/Categories/Welcome.qml</file>
         <file>qml/Categories/Other.qml</file>
     </qresource>
     <qresource prefix="/images">
@@ -17,8 +12,12 @@
         <file alias="BootMenu.png">images/BootMenu.png</file>
         <file alias="DE.png">images/DE.png</file>
         <file alias="Environment.png">images/Environment.png</file>
-        <file alias="Index.png">images/Index.png</file>
+        <file alias="Welcome.png">images/Welcome.png</file>
         <file alias="Kernel.png">images/Kernel.png</file>
         <file alias="Other.svg">images/Other.svg</file>
+        <file alias="github_fill.svg">images/github_fill.svg</file>
+        <file alias="deepin-logo.svg">images/distributor-logo-deepin.svg</file>
+        <file alias="logo.svg">images/logo.svg</file>
+        <file alias="welcome.webp">images/welcome.webp</file>
     </qresource>
 </RCC>

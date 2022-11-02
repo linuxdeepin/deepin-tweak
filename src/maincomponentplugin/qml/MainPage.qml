@@ -12,13 +12,22 @@ RowLayout {
         id: category
         Layout.fillHeight: true
         Layout.preferredWidth: 200
+        Layout.leftMargin: 10
         onCurrentItemChanged: {
+            root.resetCoverColor()
             content.source = category.model.get(category.currentIndex).source
         }
     }
-    Loader {
-        id: content
+    Rectangle {
+        clip: true
         Layout.fillHeight: true
         Layout.fillWidth: true
+        radius: 10
+        color: 'transparent'
+        Loader {
+            id: content
+            anchors.fill: parent
+        }
     }
 }
+
