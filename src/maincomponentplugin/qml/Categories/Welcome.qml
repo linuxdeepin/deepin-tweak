@@ -101,6 +101,7 @@ Item {
         height: parent.height
         z: -3
         anchors.top: header.bottom
+        radius: 15
     }
 }
 

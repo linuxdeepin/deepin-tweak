@@ -8,13 +8,9 @@ import QtQuick.Layouts 1.15
 
 AppLoader {
     Component {
-        RowLayout {
+        Loader {
             anchors.fill: parent
-            Loader {
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                source: 'qml/MainPage.qml'
-            }
+            source: 'qml/MainPage.qml'
         }
     }
 }
