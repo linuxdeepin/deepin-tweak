@@ -19,5 +19,6 @@
         <file alias="deepin-logo.svg">images/distributor-logo-deepin.svg</file>
         <file alias="logo.svg">images/logo.svg</file>
         <file alias="welcome.webp">images/welcome.webp</file>
+        <file alias="PossibleVing.png">images/PossibleVing_author.png</file>
     </qresource>
 </RCC>

@@ -9,32 +9,27 @@
         <translation>欢迎</translation>
     </message>
     <message>
-        <location filename="../src/maincomponentplugin/qml/CategoryModel.qml" line="15"/>
         <source>Desktop Environment</source>
-        <translation>桌面环境</translation>
+        <translation type="vanished">桌面环境</translation>
     </message>
     <message>
-        <location filename="../src/maincomponentplugin/qml/CategoryModel.qml" line="21"/>
         <source>Application</source>
-        <translation>应用程序</translation>
+        <translation type="vanished">应用程序</translation>
     </message>
     <message>
-        <location filename="../src/maincomponentplugin/qml/CategoryModel.qml" line="27"/>
         <source>Kernel</source>
-        <translation>内核</translation>
+        <translation type="vanished">内核</translation>
     </message>
     <message>
-        <location filename="../src/maincomponentplugin/qml/CategoryModel.qml" line="33"/>
         <source>Environment</source>
-        <translation>环境</translation>
+        <translation type="vanished">环境</translation>
     </message>
     <message>
-        <location filename="../src/maincomponentplugin/qml/CategoryModel.qml" line="39"/>
         <source>Boot Menu</source>
-        <translation>启动菜单</translation>
+        <translation type="vanished">启动菜单</translation>
     </message>
     <message>
-        <location filename="../src/maincomponentplugin/qml/CategoryModel.qml" line="45"/>
+        <location filename="../src/maincomponentplugin/qml/CategoryModel.qml" line="15"/>
         <source>Other</source>
         <translation>其他</translation>
     </message>
@@ -44,9 +39,29 @@
     <message>
         <location filename="../src/preloadplugin/Preload.qml" line="32"/>
         <location filename="../src/preloadplugin/Preload.qml" line="45"/>
-        <location filename="../src/preloadplugin/Preload.qml" line="53"/>
+        <location filename="../src/preloadplugin/Preload.qml" line="51"/>
         <source>Deepin Tweak</source>
         <translation>深度定制</translation>
+    </message>
+    <message>
+        <location filename="../src/preloadplugin/Preload.qml" line="61"/>
+        <source>Special Thanks</source>
+        <translation>鸣谢</translation>
+    </message>
+    <message>
+        <location filename="../src/preloadplugin/Preload.qml" line="70"/>
+        <source>This project was developed with the great help of the deepin community. In the name of the entire community, we would like to thank all the developers and contributors who made this release possible.</source>
+        <translation>这个项目是在 deepin 社区的巨大帮助下开发的。以整个社区的名义，我们要感谢所有的开发者和贡献者，他们使这个版本成为可能。</translation>
+    </message>
+    <message>
+        <location filename="../src/preloadplugin/Preload.qml" line="76"/>
+        <source>Interface Design</source>
+        <translation>界面设计</translation>
+    </message>
+    <message>
+        <location filename="../src/preloadplugin/Preload.qml" line="108"/>
+        <source>Program Development</source>
+        <translation>程序开发</translation>
     </message>
 </context>
 <context>
@@ -76,9 +91,9 @@ If you have more suggestions for this software, please feel free to submit a Pul
 如果您对此软件有更多建议，请随时提交  PullRequest 或 Issue。如果这个软件对你有帮助，你可以考虑捐赠给我们，或者给我们的项目打个 Star。 您的支持是我们继续发展的动力，我们感激不尽。</translation>
     </message>
     <message>
-        <location filename="../src/maincomponentplugin/qml/Categories/Welcome.qml" line="89"/>
+        <location filename="../src/maincomponentplugin/qml/Categories/Welcome.qml" line="90"/>
         <source>Made by deepin Opensource Community with love.</source>
-        <translation>来自热爱深度开源社区的力量</translation>
+        <translation>来自热爱深度开源社区的力量。</translation>
     </message>
 </context>
 </TS>

@@ -14,7 +14,6 @@ RowLayout {
         Layout.preferredWidth: 200
         Layout.leftMargin: 10
         onCurrentItemChanged: {
-            root.resetCoverColor()
             content.source = category.model.get(category.currentIndex).source
         }
     }

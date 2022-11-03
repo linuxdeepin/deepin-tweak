@@ -10,31 +10,6 @@
     </message>
     <message>
         <location filename="../src/maincomponentplugin/qml/CategoryModel.qml" line="15"/>
-        <source>Desktop Environment</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/maincomponentplugin/qml/CategoryModel.qml" line="21"/>
-        <source>Application</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/maincomponentplugin/qml/CategoryModel.qml" line="27"/>
-        <source>Kernel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/maincomponentplugin/qml/CategoryModel.qml" line="33"/>
-        <source>Environment</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/maincomponentplugin/qml/CategoryModel.qml" line="39"/>
-        <source>Boot Menu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/maincomponentplugin/qml/CategoryModel.qml" line="45"/>
         <source>Other</source>
         <translation type="unfinished"></translation>
     </message>
@@ -44,8 +19,28 @@
     <message>
         <location filename="../src/preloadplugin/Preload.qml" line="32"/>
         <location filename="../src/preloadplugin/Preload.qml" line="45"/>
-        <location filename="../src/preloadplugin/Preload.qml" line="53"/>
+        <location filename="../src/preloadplugin/Preload.qml" line="51"/>
         <source>Deepin Tweak</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/preloadplugin/Preload.qml" line="61"/>
+        <source>Special Thanks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/preloadplugin/Preload.qml" line="70"/>
+        <source>This project was developed with the great help of the deepin community. In the name of the entire community, we would like to thank all the developers and contributors who made this release possible.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/preloadplugin/Preload.qml" line="76"/>
+        <source>Interface Design</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/preloadplugin/Preload.qml" line="108"/>
+        <source>Program Development</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -73,7 +68,7 @@ If you have more suggestions for this software, please feel free to submit a Pul
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/maincomponentplugin/qml/Categories/Welcome.qml" line="89"/>
+        <location filename="../src/maincomponentplugin/qml/Categories/Welcome.qml" line="90"/>
         <source>Made by deepin Opensource Community with love.</source>
         <translation type="unfinished"></translation>
     </message>

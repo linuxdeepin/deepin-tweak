@@ -76,12 +76,29 @@ ApplicationWindow {
                     text: qsTr("Interface Design")
                 }
                 Repeater {
-                    model: ["PossibleVing", "deepin-community-design"]
-                    Label {
+                    model: ListModel {
+                        ListElement {
+                            name: "PossibleVing"
+                            icon: "images/PossibleVing.png"
+                        }
+                        ListElement {
+                            name: "deepin-community-design"
+                            icon: ""
+                        }
+                    }
+                    Row {
                         Layout.alignment: Qt.AlignHCenter
-                        font: DTK.fontManager.t8
-                        wrapMode: "WordWrap"
-                        text: modelData
+                        Image {
+                            source: icon
+                            width: 26
+                            fillMode: Image.PreserveAspectFit
+                        }
+                        Label {
+                            anchors.verticalCenter: parent.verticalCenter
+                            font: DTK.fontManager.t8
+                            wrapMode: "WordWrap"
+                            text: name
+                        }
                     }
                 }
                 Label {

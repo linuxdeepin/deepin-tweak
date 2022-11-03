@@ -11,7 +11,6 @@ Item {
         id: header
         height: 250
         x: 10
-        Component.onCompleted: root.setCoverColor('#ede0d8')
         RowLayout {
             spacing: 50
             ColumnLayout {
