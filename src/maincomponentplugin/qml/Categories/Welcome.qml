@@ -5,12 +5,13 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.15
+import "../Utils"
 
 Item {
     Item {
         id: header
         height: 250
-        x: 10
+        x: Utils.margin
         RowLayout {
             spacing: 50
             ColumnLayout {
@@ -42,11 +43,11 @@ Item {
         text: qsTr("Welcome to the deepin advanced tool -- Deepin Tweak! \nYou can define deepin in an advanced way by selecting the desired items in the sidebar. From the desktop environment to the kernel, Deepin Tweak gives you a high degree of customizability. Now, let's explore! \nIf you have more suggestions for this software, please feel free to submit a Pull Request or Issue; if this software has helped you, you can consider donating to us, or why not also give us a Star for our project. your support is our motivation to continue development, we appreciate it.")
         clip: true
         wrapMode: Text.WordWrap
-        x: 10
-        z: -2
-        width: parent.width - 20
+        x: Utils.margin
+        width: parent.width - x * 2
         anchors.top: header.bottom
-        anchors.topMargin: 10
+        anchors.bottom: bottomWrapper.top
+        anchors.topMargin: Utils.margin
         MouseArea {
             anchors.fill: parent
             hoverEnabled: true
@@ -60,13 +61,14 @@ Item {
     }
 
     Rectangle {
-        color: 'white'
+        color: Utils.transparent
         anchors.bottom: parent.bottom
-        x: 10
-        width: parent.width - 20
+        x: Utils.margin
+        width: parent.width - x * 2
         height: bottom.height
+        id: bottomWrapper
         RowLayout {
-            spacing: 10
+            spacing: Utils.spacing
             id: bottom
             width: parent.width
             Image {
@@ -93,14 +95,15 @@ Item {
         }
     }
 
+
     Rectangle {
         id: headerBackground
-        color: 'white'
+        color: palette.alternateBase
         width: parent.width
         height: parent.height
-        z: -3
+        z: -1
         anchors.top: header.bottom
-        radius: 15
+        radius: Utils.radius
     }
 }
 

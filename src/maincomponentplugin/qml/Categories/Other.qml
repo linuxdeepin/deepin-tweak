@@ -5,28 +5,30 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import org.deepin.dtk 1.0
+import "../Utils"
 
 RowLayout {
     anchors.fill: parent
-    spacing: 10
+    spacing: Utils.spacing
     ListView {
         id: listView
         clip: true
+        spacing: Utils.spacing
         Layout.alignment: Qt.AlignVCenter
         // TODO: not align to VCenter
         // NOTE: limit show five item
         Layout.minimumHeight: 5 * 36
         Layout.maximumHeight: parent.height
         Layout.preferredWidth: 180
-        Layout.leftMargin: 10
+        Layout.leftMargin: Utils.margin
         model: pluginListModel
         focus: true
         interactive: true
         highlight: Rectangle {
-            color: 'gray'
-            radius: 10
+            color: palette.highlight
+            radius: Utils.listRadius
             Rectangle {
-                color: 'red'
+                color: palette.highlightedText
                 width: 5
                 height: 20
                 radius: 5
@@ -40,10 +42,10 @@ RowLayout {
             //       otherwise the index property will not be accessible
             required property string path
             id: item
-            radius: 10
+            radius: Utils.listRadius
             height: 36
             width: listView.width
-            color: 'transparent'
+            color: Utils.transparent
             Item {
                 id: row
                 anchors.fill: parent
@@ -52,12 +54,17 @@ RowLayout {
                     hoverEnabled: true
                     onClicked: {
                         listView.currentIndex = index
+                        item.color = Utils.transparent
                     }
                     onEntered: {
-                        item.color = Qt.rgba(1, 1, 1, 0.4)
+                        if (listView.currentIndex === index) {
+                            return;
+                        }
+
+                        item.color = palette.base
                     }
                     onExited: {
-                        item.color = "transparent"
+                        item.color = Utils.transparent
                     }
                 }
                 RowLayout {
@@ -103,10 +110,10 @@ RowLayout {
         id: view
         Layout.fillHeight: true
         Layout.fillWidth: true
-        Layout.bottomMargin: 10
-        Layout.rightMargin: 10
-        color: 'white'
-        radius: 15
+        Layout.bottomMargin: Utils.margin
+        Layout.rightMargin: Utils.margin
+        color: palette.alternateBase
+        radius: Utils.listRadius
 
         function setSource(source) {
             loader.source = source

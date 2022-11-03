@@ -4,6 +4,7 @@
 
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
+import "./Utils"
 
 RowLayout {
     anchors.fill: parent
@@ -11,8 +12,8 @@ RowLayout {
     Category {
         id: category
         Layout.fillHeight: true
-        Layout.preferredWidth: 200
-        Layout.leftMargin: 10
+        Layout.preferredWidth: Utils.categoryWidth
+        Layout.leftMargin: Utils.margin
         onCurrentItemChanged: {
             content.source = category.model.get(category.currentIndex).source
         }
@@ -21,8 +22,8 @@ RowLayout {
         clip: true
         Layout.fillHeight: true
         Layout.fillWidth: true
-        radius: 10
-        color: 'transparent'
+        radius: Utils.listRadius
+        color: Utils.transparent
         Loader {
             id: content
             anchors.fill: parent
