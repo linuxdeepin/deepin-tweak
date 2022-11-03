@@ -10,6 +10,10 @@ QtObject {
     property int radius: 15
     property int spacing: 5
     property int listRadius: 10
-    property int categoryWidth: 200
-    property string transparent: 'transparent'
+    property int listItemWidth: 200
+    property int listItemHeight: 36
+    property int welcomeHeaderHeight: 250
+    property int welcomeHeaderAnimatedHeight: 200
+    property int welcomeHeaderAnimateDuration: 600
+    property string transparentBackground: 'transparent'
 }

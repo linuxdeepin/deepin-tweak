@@ -32,7 +32,6 @@ ApplicationWindow {
     title: qsTr("Deepin Tweak")
     flags: Qt.WindowMinButtonsHint | Qt.WindowCloseButtonHint | Qt.FramelessWindowHint
     header: TitleBar {
-        //        enableInWindowBlendBlur: true
         leftContent: RowLayout {
             Image {
                 Layout.preferredHeight: 26
@@ -122,8 +121,9 @@ ApplicationWindow {
             }
         }
     }
-    color: 'transparent'
+    color: "transparent"
     background: Rectangle {
+        // dark mode
         color: Qt.rgba(1, 1, 1, 0.7)
     }
 

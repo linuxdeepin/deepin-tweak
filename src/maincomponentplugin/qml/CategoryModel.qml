@@ -3,19 +3,18 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 import QtQuick 2.0
+import QtQml.Models 2.15
 
 ListModel {
     ListElement {
         title: qsTr("Welcome")
-        img: "/images/Welcome.png"
+        icon: "/images/Welcome.png"
         source: "Categories/Welcome.qml"
-        isVisible: true
     }
     ListElement {
         title: qsTr("Other")
-        img: "/images/Other.svg"
+        icon: "/images/Other.svg"
         source: "Categories/Other.qml"
-        isVisible: true
     }
 }
 
