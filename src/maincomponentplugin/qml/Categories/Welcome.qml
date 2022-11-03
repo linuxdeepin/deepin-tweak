@@ -5,22 +5,23 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.15
+import org.deepin.dtk 1.0
 import "../Utils"
 
 Item {
     Item {
         id: header
-        height: 250
+        height: Utils.welcomeHeaderHeight
         x: Utils.margin
         RowLayout {
-            spacing: 50
+            spacing: Utils.spacing * 5
             ColumnLayout {
                 Image {
                     source: "/images/logo.svg"
                 }
                 Text {
                     text: qsTr('Now,\nYou can control.')
-                    font.pixelSize: 32
+                    font: DTK.fontManager.t2
                 }
             }
             // TODO: use lottie qml
@@ -32,7 +33,7 @@ Item {
         }
         Behavior on height {
             PropertyAnimation {
-                duration: 600
+                duration: Utils.welcomeHeaderAnimateDuration
                 easing.type: Easing.InOutQuad
             }
         }
@@ -52,16 +53,16 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onEntered: {
-                header.height = 200
+                header.height = Utils.welcomeHeaderAnimatedHeight
             }
             onExited: {
-                header.height = 250
+                header.height = Utils.welcomeHeaderHeight
             }
         }
     }
 
     Rectangle {
-        color: Utils.transparent
+        color: Utils.transparentBackground
         anchors.bottom: parent.bottom
         x: Utils.margin
         width: parent.width - x * 2
@@ -90,7 +91,7 @@ Item {
             }
             Text {
                 text: qsTr("Made by deepin Opensource Community with love.")
-                font.pixelSize: 12
+                font: DTK.fontManager.t9
             }
         }
     }

@@ -8,11 +8,11 @@ import "./Utils"
 
 RowLayout {
     anchors.fill: parent
-    spacing: 10
+    spacing: Utils.spacing
     Category {
         id: category
         Layout.fillHeight: true
-        Layout.preferredWidth: Utils.categoryWidth
+        Layout.preferredWidth: Utils.listItemWidth
         Layout.leftMargin: Utils.margin
         onCurrentItemChanged: {
             content.source = category.model.get(category.currentIndex).source
@@ -23,7 +23,7 @@ RowLayout {
         Layout.fillHeight: true
         Layout.fillWidth: true
         radius: Utils.listRadius
-        color: Utils.transparent
+        color: Utils.transparentBackground
         Loader {
             id: content
             anchors.fill: parent

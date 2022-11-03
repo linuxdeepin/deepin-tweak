@@ -8,6 +8,8 @@
         <file>qml/Categories/Other.qml</file>
         <file>qml/Utils/utils.qml</file>
         <file>qml/Utils/qmldir</file>
+        <file>qml/Components/ListViewHighLight.qml</file>
+        <file>qml/Components/ListViewDelegate.qml</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="Application.png">images/Application.png</file>
