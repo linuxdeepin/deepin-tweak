@@ -32,7 +32,7 @@ ApplicationWindow {
     title: qsTr("Deepin Tweak")
     flags: Qt.WindowMinButtonsHint | Qt.WindowCloseButtonHint | Qt.FramelessWindowHint
     header: TitleBar {
-        //enableInWindowBlendBlur: true
+        //        enableInWindowBlendBlur: true
         leftContent: RowLayout {
             Image {
                 Layout.preferredHeight: 26
@@ -47,37 +47,67 @@ ApplicationWindow {
                 font.pointSize: 24
             }
         }
-        aboutDialog: AboutDialog {
-            modality: Qt.NonModal
-            version: qsTr(String("Version: %1").arg(Qt.application.version))
-            productName: qsTr('Deepin Tweak')
-            companyLogo: "file://" + DTK.deepinDistributionOrgLogo
-            websiteName: "deepin community"
-            websiteLink: "https://github.com/linuxdeepin/deepin-tweak"
-            license: qsTr(String("%1 is released under %2").arg('Deepin Tweak').arg('GPLv3'))
-            width: 300 // FIXME: default width only 50px.
+        aboutDialog: DialogWindow {
+            title: qsTr("Deepin Tweak")
+            width: 350
+            ColumnLayout {
+                width: parent.width
+                Item {
+                    Layout.topMargin: 10
+                }
+                Label {
+                    Layout.alignment: Qt.AlignHCenter
+                    font: DTK.fontManager.t5
+                    text: qsTr("Special Thanks")
+                }
+                Label {
+                    Layout.alignment: Qt.AlignHCenter
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 10
+                    Layout.rightMargin: 10
+                    font: DTK.fontManager.t8
+                    wrapMode: "WordWrap"
+                    text: qsTr("This project was developed with the great help of the deepin community. In the name of the entire community, we would like to thank all the developers and contributors who made this release possible.")
+                }
+                Label {
+                    Layout.alignment: Qt.AlignHCenter
+                    font: DTK.fontManager.t5
+                    wrapMode: "WordWrap"
+                    text: qsTr("Interface Design")
+                }
+                Repeater {
+                    model: ["PossibleVing", "deepin-community-design"]
+                    Label {
+                        Layout.alignment: Qt.AlignHCenter
+                        font: DTK.fontManager.t8
+                        wrapMode: "WordWrap"
+                        text: modelData
+                    }
+                }
+                Label {
+                    Layout.alignment: Qt.AlignHCenter
+                    font: DTK.fontManager.t5
+                    wrapMode: "WordWrap"
+                    text: qsTr("Program Development")
+                }
+                Repeater {
+                    model: ["justforlxz"]
+                    Label {
+                        Layout.alignment: Qt.AlignHCenter
+                        font: DTK.fontManager.t8
+                        wrapMode: "WordWrap"
+                        text: modelData
+                    }
+                }
+                Item {
+                    Layout.bottomMargin: 10
+                }
+            }
         }
     }
     color: 'transparent'
     background: Rectangle {
         color: Qt.rgba(1, 1, 1, 0.7)
-        // FIXME: 220 is 200(left) + 20(margin)
-        Rectangle {
-            id: cover
-            x: 220
-            y: 0
-            width: root.width - 220
-            height: root.height
-            radius: 15
-        }
-    }
-
-    function resetCoverColor() {
-        cover.color = Qt.rgba(1, 1, 1, 0.4)
-    }
-
-    function setCoverColor(color) {
-        cover.color = color
     }
 
     DWindow.enabled: true
