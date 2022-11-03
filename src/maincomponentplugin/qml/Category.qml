@@ -5,19 +5,20 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.15
+import "./Utils"
 
 ListView {
     id: listView
     model: CategoryModel {}
-    Layout.topMargin: 10
-    spacing: 6
+    Layout.topMargin: Utils.margin
+    spacing: Utils.spacing
     focus: true
     interactive: false
     highlight: Rectangle {
-        color: '#ffffff'
-        radius: 10
+        color: palette.highlight
+        radius: Utils.listRadius
         Rectangle {
-            color: 'red'
+            color: palette.highlightedText
             width: 5
             height: 20
             radius: 5
@@ -27,10 +28,10 @@ ListView {
     }
     delegate: Rectangle {
         id: item
-        radius: 10
+        radius: Utils.listRadius
         height: row.height
         width: listView.width
-        color: 'transparent'
+        color: Utils.transparent
         Item {
             id: row
             width: listView.width
@@ -40,12 +41,16 @@ ListView {
                 hoverEnabled: true
                 onClicked: {
                     listView.currentIndex = index
+                    item.color = Utils.transparent
                 }
                 onEntered: {
-                    item.color = Qt.rgba(1, 1, 1, 0.4)
+                    if (listView.currentIndex === index) {
+                        return;
+                    }
+                    item.color = palette.base
                 }
                 onExited: {
-                    item.color = "transparent"
+                    item.color = Utils.transparent
                 }
             }
             RowLayout {
