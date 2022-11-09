@@ -32,3 +32,4 @@ endif()
 
 install(TARGETS ${APP_NAME} DESTINATION ${APP_BIN_INSTALL_DIR})
 install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/../../deepin-tweak.desktop" DESTINATION share/applications)
+install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/../preloadplugin/deepin-tweak.svg" DESTINATION share/icons/hicolor/scalable/apps/)

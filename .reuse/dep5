@@ -39,7 +39,7 @@ Copyright: None
 License: CC0-1.0
 
 # Icon files
-Files: src/maincomponentplugin/images/* src/preloadplugin/logo.svg plugins/org.deepin.tweak.titlebar/assets/icon.png
+Files: src/maincomponentplugin/images/* src/preloadplugin/deepin-tweak.svg plugins/org.deepin.tweak.titlebar/assets/icon.png
 Copyright: Remix
 License: Apache-2.0
 
