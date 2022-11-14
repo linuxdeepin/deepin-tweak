@@ -1,3 +1,9 @@
+# Deepin Tweak
+
+Tweak 是一个基于 dtkdeclarative 的高级设置工具，Tweak 仅维护很少的内建功能，大部分功能将由符合开发规范的插件提供，通常这些插件由社区开发者提供。
+
+[英文文档](README.md)
+
 ## 为什么需要这个工具
 
 deepin 是一个用户群体广泛的发行版，其中囊括普通用户、开发者用户、极客等，对于使用 deepin 的用户而言，对桌面环境及操作系统的个性化管理能力有着强烈诉求。当前，deepin 为平衡普通用户和开发者用户之间的差异，更多的选择了相对稳定性、易操作、规则更为固定的管理方式，将产品提供给用户使用。但对于开发者或极客用户而言，期望对操作系统和桌面环境有着更加灵活的个性化和自定义管理能力，而目前的产品则无法满足这样的需求。
@@ -29,6 +35,50 @@ deepin 是一个用户群体广泛的发行版，其中囊括普通用户、开�
 
 为了更灵活的支持功能扩展，本项目计划支持插件，自身主要提供插件的运行环境，在 GUI 方面使用 qml，其它方面提供 js 的接口，目标是能满足大部分插件的开发需求。因为不涉及二进制文件，插件可以更容易分发，甚至可以专门提供一个网站允许自由发布和下载这些插件。
 
-## 如何提议一个新的设置项
+## 运行依赖
 
-[参见](https://github.com/linuxdeepin/developer-center/discussions/3236)
+* dtkdeclarative
+
+## 构建依赖
+
+* cmake
+* libdtkdeclarative-dev
+* qtdeclarative5-dev
+* qtbase5-dev-tools,
+* qtquickcontrols2-5-dev
+* libdtkgui-dev
+* libdtkcore-dev
+
+## 安装
+
+### 从源码构建
+
+1. 请确保已安装全部构建依赖
+2. 获取源码
+
+    ```shell
+    $ git clone https://github.com/linuxdeepin/deepin-tweak.git
+    cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build build
+    ```
+
+3. 安装
+
+    ```shell
+    $ sudo cmake --install build
+    ```
+
+## 获取帮助
+
+* 如果您遇到任何问题，请随时报告问题
+* 在 [Deepin 论坛](https://bbs.deepin.org/) 获取通用帮助
+
+## 参与
+
+我们鼓励您参与问题报告和项目贡献
+
+* [开发者贡献指南](https://github.com/linuxdeepin/developer-center/wiki/Contribution-Guidelines-for-Developers)
+
+## 许可
+
+deepin-tweak 使用 [LGPL-3.0-or-later](LICENSE)
