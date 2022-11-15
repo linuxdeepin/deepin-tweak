@@ -10,6 +10,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(GNUInstallDirs)
 
@@ -25,5 +26,20 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_definitions(-DPLUGINPATH="${CMAKE_CURRENT_SOURCE_DIR}")
 endif()
 
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
+    add_definitions(-DLOCALLIBPATH="${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")
+else()
+    add_definitions(-DLOCALLIBPATH="${CMAKE_INSTALL_FULL_LIBDIR}/deepin-tweak")
+endif()
+
+file(GLOB_RECURSE QRC resources.qrc)
+
+set(LIB_INSTALL_DIR "${CMAKE_INSTALL_LIBDIR}/deepin-tweak")
+
 add_subdirectory(src)
 add_subdirectory(plugins)
+
+install(FILES misc/deepin-tweak.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
+install(FILES misc/deepin-tweak.svg DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/scalable/apps/)

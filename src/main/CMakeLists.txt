@@ -1,7 +1,6 @@
 # SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
 
 # SPDX-License-Identifier: CC0-1.0
-set(APP_BIN_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/bin/)
 set(APP_NAME ${CMAKE_PROJECT_NAME})
 add_definitions(-DAPP_NAME="${APP_NAME}")
 
@@ -15,10 +14,9 @@ set(SRC
     )
 
 # Find the Qt5Quick library
-find_package(Qt5Quick CONFIG REQUIRED)
 
 # Add EXE
-add_executable(${APP_NAME} ${SRC} ../../resources.qrc)
+add_executable(${APP_NAME} ${SRC} ${QRC})
 
 # 由于 EXE 只是作为启动程序加载 LIB 使用，一般来说，只需链接 ${LIB_NAME} 既可。
 target_link_libraries(${APP_NAME}
@@ -26,10 +24,5 @@ target_link_libraries(${APP_NAME}
     ${DtkDeclarative_LIBRARIES}
     )
 
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set_target_properties(${APP_NAME} PROPERTIES INSTALL_RPATH ${DTK_QML_APP_PLUGIN_PATH})
-endif()
 
-install(TARGETS ${APP_NAME} DESTINATION ${APP_BIN_INSTALL_DIR})
-install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/../../deepin-tweak.desktop" DESTINATION share/applications)
-install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/../preloadplugin/deepin-tweak.svg" DESTINATION share/icons/hicolor/scalable/apps/)
+install(TARGETS ${APP_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR})
