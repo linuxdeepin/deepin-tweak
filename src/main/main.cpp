@@ -10,10 +10,6 @@ DQUICK_USE_NAMESPACE
 
 int main(int argc, char *argv[])
 {
-#ifdef LOCALLIBPATH
     DAppLoader appLoader(APP_NAME, LOCALLIBPATH);
-#else
-    DAppLoader appLoader(APP_NAME);
-#endif
     return appLoader.exec(argc, argv);
 }
