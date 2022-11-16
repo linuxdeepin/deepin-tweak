@@ -37,7 +37,7 @@ ApplicationWindow {
                 Layout.preferredHeight: 26
                 Layout.preferredWidth: 26
                 Layout.leftMargin: 10
-                source: "logo.svg"
+                source: "deepin-tweak.svg"
                 fillMode: Image.PreserveAspectFit
             }
             Text {
