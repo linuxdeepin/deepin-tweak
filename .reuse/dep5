@@ -8,6 +8,11 @@ Files: .github/*
 Copyright: None
 License: CC0-1.0
 
+# .obs/workflows.yml
+Files: .obs/workflows.yml
+Copyright: None
+License: CC0-1.0
+
 # debian rpm archlinux
 Files: debian/* rpm/* archlinux/*
 Copyright: None
