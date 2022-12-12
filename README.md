@@ -13,10 +13,11 @@ Deepin Tweak is an advanced setting tool built on dtkdeclarative. Deepin Tweak o
 * cmake
 * libdtkdeclarative-dev
 * qtdeclarative5-dev
-* qtbase5-dev-tools,
+* qtbase5-dev-tools
 * qtquickcontrols2-5-dev
 * libdtkgui-dev
 * libdtkcore-dev
+* libgsettings-qt-dev
 
 ## Installation
 

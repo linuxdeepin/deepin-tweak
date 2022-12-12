@@ -44,10 +44,11 @@ deepin 是一个用户群体广泛的发行版，其中囊括普通用户、开�
 * cmake
 * libdtkdeclarative-dev
 * qtdeclarative5-dev
-* qtbase5-dev-tools,
+* qtbase5-dev-tools
 * qtquickcontrols2-5-dev
 * libdtkgui-dev
 * libdtkcore-dev
+* libgsettings-qt-dev
 
 ## 安装
 
