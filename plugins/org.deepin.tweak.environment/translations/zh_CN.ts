@@ -31,10 +31,8 @@
     </message>
     <message>
         <location filename="../main.qml" line="117"/>
-        <source>Please modify environment variables carefully.
-You must clearly understand the importance of system environment variables. This operation is irreversible.
-If there is a problem, please log in with tty and delete the $HOME/.dde_env file to restore the environment.</source>
-        <translation>请慎重修改环境变量，您必须明确知道系统环境变量的重要性。该操作不可逆，如果出现问题，请在 tty 登录，并删除 $HOME/.dde_env 文件来恢复环境。</translation>
+        <source>Please modify environment variables carefully.You must clearly understand the importance of system environment variables. This operation is irreversible.If there is a problem, please log in with tty and delete the $HOME/.dde_env file to restore the environment. Please login again to apply changes.</source>
+        <translation>请慎重修改环境变量，您必须明确知道系统环境变量的重要性。该操作不可逆，如果出现问题，请在 tty 登录，并删除 $HOME/.dde_env 文件来恢复环境。请重新登录来应用变更。</translation>
     </message>
     <message>
         <location filename="../main.qml" line="126"/>
