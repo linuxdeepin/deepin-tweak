@@ -113,9 +113,9 @@ ColumnLayout {
         id: tips
         Layout.fillWidth: true
         Layout.margins: 10
-        wrapMode: Text.WrapAnywhere
-        text: qsTr('Please modify environment variables carefully.\nYou must clearly understand the importance of system environment variables. This operation is irreversible.\nIf there is a problem, please log in with tty and delete the $HOME/.dde_env file to restore the environment.')
-      }
+        wrapMode: Text.WordWrap
+        text: qsTr('Please modify environment variables carefully.You must clearly understand the importance of system environment variables. This operation is irreversible.If there is a problem, please log in with tty and delete the $HOME/.dde_env file to restore the environment. Please login again to apply changes.')
+    }
 
     Button {
         Layout.alignment: Qt.AlignHCenter | Qt.AlignTop

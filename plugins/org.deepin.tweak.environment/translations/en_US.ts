@@ -15,9 +15,7 @@
     </message>
     <message>
         <location filename="../main.qml" line="117"/>
-        <source>Please modify environment variables carefully.
-You must clearly understand the importance of system environment variables. This operation is irreversible.
-If there is a problem, please log in with tty and delete the $HOME/.dde_env file to restore the environment.</source>
+        <source>Please modify environment variables carefully.You must clearly understand the importance of system environment variables. This operation is irreversible.If there is a problem, please log in with tty and delete the $HOME/.dde_env file to restore the environment. Please login again to apply changes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
