@@ -26,6 +26,8 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_definitions(-DPLUGINPATH="${CMAKE_CURRENT_SOURCE_DIR}")
 endif()
 
+set(LIB_INSTALL_DIR "${CMAKE_INSTALL_LIBDIR}/deepin-tweak")
+
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
     set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
@@ -35,8 +37,6 @@ else()
 endif()
 
 file(GLOB_RECURSE QRC resources.qrc)
-
-set(LIB_INSTALL_DIR "${CMAKE_INSTALL_LIBDIR}/deepin-tweak")
 
 add_subdirectory(src)
 add_subdirectory(plugins)
