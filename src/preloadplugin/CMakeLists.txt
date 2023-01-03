@@ -16,4 +16,4 @@ target_link_libraries(${PRELOAD_LIB_NAME}
     Qt5::Quick
     ${DtkDeclarative_LIBRARIES}
     )
-install(TARGETS ${PRELOAD_LIB_NAME} DESTINATION ${DTK_QML_APP_PLUGIN_PATH})
+install(TARGETS ${PRELOAD_LIB_NAME} DESTINATION ${LIB_INSTALL_DIR})
