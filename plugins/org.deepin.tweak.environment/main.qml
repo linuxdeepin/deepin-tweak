@@ -176,6 +176,7 @@ ColumnLayout {
         const file = Tweak.newFile(path.slice(6, path.length));
         if (!file.open(FileMode.ReadOnly)) {
             console.error('cannot open .dde_env on $HOME');
+            add.clicked();
             return;
         }
         const s = new String(file.readAll());
