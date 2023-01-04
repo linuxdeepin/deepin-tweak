@@ -14,6 +14,6 @@ add_library(${PRELOAD_LIB_NAME} SHARED
     )
 target_link_libraries(${PRELOAD_LIB_NAME}
     Qt5::Quick
-    ${DtkDeclarative_LIBRARIES}
+    Dtk::Declarative
     )
 install(TARGETS ${PRELOAD_LIB_NAME} DESTINATION ${LIB_INSTALL_DIR})
