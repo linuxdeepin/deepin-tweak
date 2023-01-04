@@ -1,3 +1,9 @@
+deepin-tweak (1.2.1) unstable; urgency=medium
+
+  * fix release mode lib path
+
+ -- TagBuilder <tagbuilder@deepin.com>  Wed, 04 Jan 2023 16:06:57 +0800
+
 deepin-tweak (1.2.0) unstable; urgency=medium
 
   * add environment plugin
