@@ -1,3 +1,9 @@
+deepin-tweak (1.2.2) unstable; urgency=medium
+
+  * revert Dtk::Declarative
+
+ -- TagBuilder <tagbuilder@deepin.com>  Thu, 05 Jan 2023 10:32:57 +0800
+
 deepin-tweak (1.2.1) unstable; urgency=medium
 
   * fix release mode lib path
