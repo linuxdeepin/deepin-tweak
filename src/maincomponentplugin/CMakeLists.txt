@@ -29,12 +29,13 @@ add_library(${MAINCOMPONENT_LIB_NAME} SHARED
 )
 target_include_directories(${MAINCOMPONENT_LIB_NAME}
     PUBLIC
+    ${DTKDECLARATIVE_INCLUDE_DIR}
     PkgConfig::QGSettings
 )
 target_link_libraries(${MAINCOMPONENT_LIB_NAME}
     Qt5::Quick
     Qt5::Widgets
     PkgConfig::QGSettings
-    Dtk::Declarative
+    ${DtkDeclarative_LIBRARIES}
 )
 install(TARGETS ${MAINCOMPONENT_LIB_NAME} DESTINATION ${LIB_INSTALL_DIR})

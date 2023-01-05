@@ -21,8 +21,8 @@ add_executable(${APP_NAME} ${SRC} ${QRC})
 # 由于 EXE 只是作为启动程序加载 LIB 使用，一般来说，只需链接 ${LIB_NAME} 既可。
 target_link_libraries(${APP_NAME}
     Qt5::Quick
-    Dtk::Declarative
-)
+    ${DtkDeclarative_LIBRARIES}
+    )
 
 
 install(TARGETS ${APP_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR})
