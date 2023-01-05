@@ -39,7 +39,7 @@ Copyright: None
 License: CC0-1.0
 
 # Resource files
-Files: *.qrc src/maincomponentplugin/qml/Utils/qmldir
+Files: *.qrc src/maincomponentplugin/qml/Utils/qmldir *.json
 Copyright: None
 License: CC0-1.0
 
