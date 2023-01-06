@@ -2,7 +2,7 @@
 
 Tweak 是一个基于 dtkdeclarative 的高级设置工具，Tweak 仅维护很少的内建功能，大部分功能将由符合开发规范的插件提供，通常这些插件由社区开发者提供。
 
-[英文文档](README.md)
+[English](README.md)
 
 ## 为什么需要这个工具
 
