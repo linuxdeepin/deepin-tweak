@@ -17,7 +17,7 @@ RowLayout {
         spacing: Utils.spacing
         Layout.fillHeight: true
         Layout.preferredWidth: Utils.listItemWidth
-        Layout.alignment: Qt.AlignVCent
+        Layout.alignment: Qt.AlignVCenter
         model: pluginListModel
         focus: true
         interactive: true
