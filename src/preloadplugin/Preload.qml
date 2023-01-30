@@ -27,6 +27,8 @@ import "."
 ApplicationWindow {
     id: root
     visible: true
+    x: Screen.width / 2 - width / 2
+    y: Screen.height / 2 - height / 2
     width: 800
     height: 500
     title: qsTr("Deepin Tweak")
