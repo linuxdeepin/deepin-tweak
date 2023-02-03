@@ -18,12 +18,15 @@ ColumnLayout {
     property string author: "justforlxz"
     property string icon: "icon.png"
 
-    function loadConfig() {
+    function getConfigFilePath(theme) {
         const paths = StandardPaths.standardLocations(StandardPaths.GenericDataLocation)
         if (paths.length === 0) {
             return;
         }
-        const path = paths[0] + '/deepin/themes/deepin/light/titlebar.ini';
+        return paths[0].slice('files://'.length-1) + '/deepin/themes/deepin/'+ theme + '/titlebar.ini';
+    }
+    function loadConfig() {
+        const path = getConfigFilePath('light')
         const settings = Tweak.newSettings(path);
         settings.beginGroup('Active');
         const height = settings.value('height');
@@ -34,11 +37,7 @@ ColumnLayout {
 
     function setHeight(value) {
         const setTitleBar = function(theme, value) {
-            const paths = StandardPaths.standardLocations(StandardPaths.GenericDataLocation)
-            if (paths.length === 0) {
-                return;
-            }
-            const path = paths[0] + '/deepin/themes/deepin/'+ theme + '/titlebar.ini';
+            const path = getConfigFilePath(theme)
             const settings = Tweak.newSettings(path);
             settings.beginGroup('Active');
             settings.setValue('height', value);
@@ -68,6 +67,7 @@ ColumnLayout {
             from: 0
             to: 9999
             value: 40
+            editable: true
             Layout.alignment: Qt.AlignHCenter
             Layout.fillWidth: true
 
