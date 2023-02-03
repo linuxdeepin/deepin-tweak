@@ -6,3 +6,5 @@ install(DIRECTORY org.deepin.tweak.titlebar
     DESTINATION share/deepin-tweak/plugins)
 install(DIRECTORY org.deepin.tweak.environment
     DESTINATION share/deepin-tweak/plugins)
+install(DIRECTORY dev.myml.tweak.tasks
+    DESTINATION share/deepin-tweak/plugins)

@@ -14,6 +14,7 @@ Build-Depends:
  libdtkdeclarative-dev,
  libgsettings-qt-dev,
  qttools5-dev-tools,
+ libnemodbus,
 Standards-Version: 4.6.0
 Rules-Requires-Root: no
 
