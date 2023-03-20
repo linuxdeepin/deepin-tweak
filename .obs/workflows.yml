@@ -2,16 +2,24 @@ test_build:
   steps:
     - link_package:
         source_project: deepin:Develop:dde
-        source_package: deepin-tweak
+        source_package: %{SCM_REPOSITORY_NAME}
         target_project: deepin:CI
 
     - configure_repositories:
         project: deepin:CI
         repositories:
-          - name: Deepin_20_Test
+          - name: deepin_develop
             paths:
-              - target_project: deepin:Develop:dde
-                target_repository: Deepin_20_Test
+              - target_project: deepin:CI
+                target_repository: deepin_develop
+            architectures:
+              - x86_64
+              - aarch64
+
+          - name: debian
+            paths:
+              - target_project: deepin:CI
+                target_repository: debian_sid
             architectures:
               - x86_64
 
@@ -22,7 +30,7 @@ tag_build:
   steps:
     - branch_package:
         source_project: deepin:Develop:dde
-        source_package: deepin-tweak
+        source_package: %{SCM_REPOSITORY_NAME}
         target_project: deepin:Unstable:dde
   filters:
     event: tag_push
@@ -30,7 +38,7 @@ tag_build:
 commit_build:
   steps:
     - trigger_services:
-        project: ddeepin:Develop:dde
-        package: deepin-tweak
+        project: deepin:Develop:dde
+        package: %{SCM_REPOSITORY_NAME}
   filters:
     event: push
