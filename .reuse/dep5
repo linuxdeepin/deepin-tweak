@@ -62,3 +62,8 @@ License: CC0-1.0
 Files: .clang-format
 Copyright: None
 License: CC0-1.0
+
+# plugin.json
+Files: src/**/plugin.json
+Copyright: None
+License: CC0-1.0

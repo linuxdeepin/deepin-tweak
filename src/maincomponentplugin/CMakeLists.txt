@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
 
 # SPDX-License-Identifier: CC0-1.0
-set(MAINCOMPONENT_LIB_NAME dtkqml-${CMAKE_PROJECT_NAME})
+set(MAINCOMPONENT_LIB_NAME ${CMAKE_PROJECT_NAME}-main)
 set(MAINCOMPONENNT_SRC
     maincomponentplugin.h
     maincomponentplugin.cpp

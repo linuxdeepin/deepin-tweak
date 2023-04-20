@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
 
 # SPDX-License-Identifier: CC0-1.0
-set(PRELOAD_LIB_NAME dtkqml-${CMAKE_PROJECT_NAME}-Preload)
+set(PRELOAD_LIB_NAME ${CMAKE_PROJECT_NAME}-preload)
 set(PRELOAD_SRC
     preloadplugin.cpp
     )

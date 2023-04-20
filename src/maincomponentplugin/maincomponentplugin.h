@@ -12,7 +12,7 @@ class PluginListModel;
 class MainComponentPlugin : public QObject, public DTK_QUICK_NAMESPACE::DQmlAppMainWindowInterface
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID DQmlAppMainWindowInterface_iid)
+    Q_PLUGIN_METADATA(IID DQmlAppMainWindowInterface_iid FILE "plugin.json")
     Q_INTERFACES(DTK_QUICK_NAMESPACE::DQmlAppMainWindowInterface)
 public:
     MainComponentPlugin(QObject *parent = nullptr);
