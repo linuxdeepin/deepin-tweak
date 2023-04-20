@@ -11,7 +11,7 @@ class QQmlComponent;
 class PreloadPlugin : public QObject, public DTK_QUICK_NAMESPACE::DQmlAppPreloadInterface
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID DQmlAppPreloadInterface_iid)
+    Q_PLUGIN_METADATA(IID DQmlAppPreloadInterface_iid FILE "plugin.json")
     Q_INTERFACES(DTK_QUICK_NAMESPACE::DQmlAppPreloadInterface)
 public:
     PreloadPlugin(QObject *parent = nullptr);
