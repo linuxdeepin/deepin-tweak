@@ -10,6 +10,8 @@ DQUICK_USE_NAMESPACE
 
 int main(int argc, char *argv[])
 {
+    // 避免窗口菜单背景显示灰色 https://github.com/linuxdeepin/dtk/issues/70
+    qputenv("D_POPUP_MODE", "embed");
     DAppLoader appLoader(APP_NAME, LOCALLIBPATH);
     return appLoader.exec(argc, argv);
 }

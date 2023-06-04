@@ -8,3 +8,5 @@ install(DIRECTORY org.deepin.tweak.environment
     DESTINATION share/deepin-tweak/plugins)
 install(DIRECTORY dev.myml.tweak.tasks
     DESTINATION share/deepin-tweak/plugins)
+install(DIRECTORY fun.tarrow.tweak.fillet
+    DESTINATION share/deepin-tweak/plugins)   
