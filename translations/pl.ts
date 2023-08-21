@@ -66,7 +66,9 @@ Ty masz kontrolę.</translation>
         <source>Welcome to the deepin advanced tool -- Deepin Tweak! 
 You can define deepin in an advanced way by selecting the desired items in the sidebar. From the desktop environment to the kernel, Deepin Tweak gives you a high degree of customizability. Now, let&apos;s explore! 
 If you have more suggestions for this software, please feel free to submit a Pull Request or Issue; if this software has helped you, you can consider donating to us, or why not also give us a Star for our project. your support is our motivation to continue development, we appreciate it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Witamy w zaawansowanym narzędziu deepin - Dostosowywanie Deepin! 
+Możesz dostosować deepin w zaawansowany sposób, wybierając żądane elementy na pasku bocznym. Od środowiska graficznego po jądro systemu, Dostosowywanie Deepin zapewnia wysoki stopień możliwości konfiguracji. A teraz do dzieła! 
+Jeśli masz więcej sugestii dotyczących tego programu, prosimy o przesłanie Zgłoszenia lub Zgłoszenia o przyjęcie; jeśli ten program pomógł Ci, możesz rozważyć przekazanie nam darowizny lub dać gwiazdkę naszemu projektowi. Twoje wsparcie jest naszą motywacją do dalszego rozwoju, doceniamy to.</translation>
     </message>
     <message>
         <location filename="../src/maincomponentplugin/qml/Categories/Welcome.qml" line="90"/>
