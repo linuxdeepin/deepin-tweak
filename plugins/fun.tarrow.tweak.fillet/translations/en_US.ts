@@ -14,17 +14,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="41"/>
-        <source>Fillet size (0-18)</source>
+        <location filename="../main.qml" line="46"/>
+        <source>Fillet size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="67"/>
+        <location filename="../main.qml" line="72"/>
         <source>Reset to default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="86"/>
+        <location filename="../main.qml" line="91"/>
         <source>Apply</source>
         <translation type="unfinished"></translation>
     </message>

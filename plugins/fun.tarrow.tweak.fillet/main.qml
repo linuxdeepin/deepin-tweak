@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2023 ice
-
+// SPDX-FileCopyrightText: 2023 ice <tonimayloneya@gmail.com>
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
+import Nemo.DBus 2.0
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.7
@@ -13,32 +13,37 @@ ColumnLayout {
 
     property string displayName: qsTr("Fillet size")
     property string description: qsTr("Adjust window fillet size")
-    property string version: "0.0.1"
+    property string version: "0.0.2"
     property string author: "ice"
     property string icon: "icon.svg"
     property int filletSize: 18
+    property string appearanceService: "org.deepin.dde.Appearance1"
+    property string appearancePath: "/org/deepin/dde/Appearance1"
+    property string appearanceInterface: "org.deepin.dde.Appearance1"
 
     function getFilletSize() {
-        let order = Tweak.newLauncher().program("gsettings").arguments(["get", "com.deepin.xsettings", "dtk-window-radius"]);
-        order.asyncCall((callback) => {
-            filletSize = callback.allStandardOutput;
-        });
+        filletSize = appearanceInter.getProperty("WindowRadius");
     }
 
-    function setFilletSize(num) {
-        let order = Tweak.newLauncher().program("gsettings").arguments(["set", "com.deepin.xsettings", "dtk-window-radius", num]);
-        order.asyncCall((callback) => {
-            filletSize = num;
-        });
+    function setFilletSize(_size) {
+        appearanceInter.setProperty("WindowRadius", _size);
     }
 
     Component.onCompleted: getFilletSize()
+
+    DBusInterface {
+        id: appearanceInter
+
+        service: appearanceService
+        iface: appearanceInterface
+        path: appearancePath
+    }
 
     Label {
         Layout.topMargin: 10
         Layout.leftMargin: 10
         Layout.rightMargin: 10
-        text: qsTr("Fillet size (0-18)")
+        text: qsTr("Fillet size")
         font.bold: true
         font.pixelSize: 15
     }
@@ -54,7 +59,7 @@ ColumnLayout {
             id: control
 
             from: 0
-            to: 18
+            to: 999
             value: filletSize
             editable: true
             Layout.alignment: Qt.AlignHCenter
