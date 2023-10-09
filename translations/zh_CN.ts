@@ -88,7 +88,7 @@ You can define deepin in an advanced way by selecting the desired items in the s
 If you have more suggestions for this software, please feel free to submit a Pull Request or Issue; if this software has helped you, you can consider donating to us, or why not also give us a Star for our project. your support is our motivation to continue development, we appreciate it.</source>
         <translation>欢迎使用深度高级工具——深度定制！
 您可以通过在侧边栏中选择所需的项目来以高级方式定义深度操作系统。 从桌面环境到内核，深度定制为您提供高度的可定制性。 现在，让我们一起探索吧！
-如果您对此软件有更多建议，请随时提交  PullRequest 或 Issue。如果这个软件对你有帮助，你可以考虑捐赠给我们，或者给我们的项目打个 Star。 您的支持是我们继续发展的动力，我们感激不尽。</translation>
+如果您对此软件有更多建议，请随时提交 Pull Request 或 Issue。如果这个软件对你有帮助，你可以考虑捐赠给我们，或者给我们的项目打个 Star。 您的支持是我们继续发展的动力，我们感激不尽。</translation>
     </message>
     <message>
         <location filename="../src/maincomponentplugin/qml/Categories/Welcome.qml" line="90"/>
